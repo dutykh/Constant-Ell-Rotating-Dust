@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# LaTeX build artefacts, at the repository root only. A successful `make`
+# removes these itself; they survive a failed run, where they are needed for
+# diagnosis. The vector figures under figures/ are tracked build inputs, and
+# the compiled manuscript PDF is tracked, so neither is matched here.
+/*.aux
+/*.bbl
+/*.blg
+/*.fdb_latexmk
+/*.fls
+/*.out
+/*.toc
+/*.synctex.gz
+/*Notes.bib
+
+# Matplotlib cache directory, when MPLCONFIGDIR is pointed inside the tree.
+.mplcache/

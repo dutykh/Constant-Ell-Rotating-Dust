@@ -1,0 +1,342 @@
+\subsection{Sharpness audit via a state-constrained control problem}
+\label{subsec:approx-flat-sharpness}
+
+The preceding estimates are upper bounds, but their logical status is not
+the same in the two signs of $\ellzero$. We now formulate the trace problem
+as an exact one-dimensional control system. This formulation proves
+sharpness for $\ellzero\leqslant0$, detects a strict gap in the positive-
+$\ellzero$ estimate of Corollary~\ref{cor:optimized-approx-flat-span}, and
+identifies the residual optimization problem without confusing a formal
+trace with a solution of the two-dimensional field equation.
+
+For $\ellzero>0$, define
+\begin{equation}
+\mathfrak g(u,y,s):=
+\frac{2(1+s)\bigl[(1-s)-y(1-u^2s)\bigr]}
+{2+y(1-u^2)}.
+\label{eq:positive-l-control-drift}
+\end{equation}
+The exact equatorial identity in
+Lemma~\ref{lem:exact-equatorial-log-identity} is equivalent to
+\begin{equation}
+\dot u=su,\qquad
+\dot y=(1-s)y,\qquad
+\dot s=\mathfrak g(u,y,s)+w,
+\qquad w:=-Z\geqslant0,
+\label{eq:positive-l-control-system}
+\end{equation}
+where a dot denotes $d/dt$. The state constraints are
+\begin{equation}
+0<u<1,\qquad
+0<y\leqslant\frac{2}{1+u^2},\qquad
+|s|\leqslant\varepsilon.
+\label{eq:positive-l-control-state}
+\end{equation}
+Thus the logarithmic span is precisely the exit time of a
+state-constrained system with the one-sided transverse-curvature control
+$w\geqslant0$. In particular, the control can increase $s$ relative to the
+zero-curvature drift, but it cannot decrease it.
+
+There is also a geometric version of the same reduction. Set
+$X=r^2$ and let
+$f(X)=\Phi_{\ellzero}(r,ru(r))$ be the auxiliary trace. A direct
+calculation gives
+\begin{equation}
+\frac{d^2f}{dX^2}
+=\frac{uA}{4r^3}\bigl(\dot s-\mathfrak g(u,y,s)\bigr)
+=\frac{uA}{4r^3}w,
+\qquad A=2+y(1-u^2)>0.
+\label{eq:control-convexity-equivalence}
+\end{equation}
+Consequently, vertical localization is exactly convexity of the auxiliary
+equatorial datum as a function of $r^2$. This is a useful structural
+interpretation of the control; it is not an additional inequality.
+
+\begin{lemma}[Analytic lifting of strict trace controls]
+\label{lem:analytic-lifting-trace-controls}
+Let $u$ be positive and real analytic near a compact radial interval away
+from the axis. Suppose that the inequalities in
+Eq.~\eqref{eq:positive-l-control-state} are strict, that $A>0$, and that
+$\dot s>\mathfrak g(u,y,s)$. Then the trace lifts to a reflection-symmetric
+real-analytic solution of the exact constant-$\ell$ VFE in a neighbourhood
+of the interval, with $v(r,0)=u(r)$, $v_z(r,0)=0$, positive density, and
+$v_{zz}(r,0)<0$.
+\end{lemma}
+
+\begin{proof}
+Prescribe analytic Cauchy data for the linear auxiliary equation by
+$$
+\mathcal F(r,0)=\Phi_{\ellzero}(r,ru(r)),
+\qquad \mathcal F_z(r,0)=0.
+$$
+The Cauchy--Kowalevski theorem applied to
+$\mathcal F_{zz}=-\mathcal F_{rr}+r^{-1}\mathcal F_r$ gives a unique
+analytic solution near each point of the interval. Uniqueness makes the
+local solutions agree on overlaps, and compactness gives a common collar.
+Since $A=\partial_\eta\Phi_{\ellzero}>0$, the analytic implicit-function
+theorem recovers a unique analytic field $\eta$ on the same inverse sheet.
+The chain-rule identity underlying Eq.~\eqref{eq:GS-operator} then gives
+the exact VFE. On the trace,
+$Z=\mathfrak g-\dot s<0$, so $v_{zz}=uZ/r^2<0$. Strict density and
+subluminality persist in a smaller collar by continuity.
+\end{proof}
+
+The lemma shows that strict analytic controls are genuine local PDE
+solutions. It does not make the elliptic Cauchy problem stable, nor does it
+provide an axis, a vacuum exterior, or a global completion.
+
+We next improve the positive-$\ellzero$ comparison estimate. The result is
+deliberately explicit because it proves that the previously optimized
+bound is not the true optimum.
+
+\begin{theorem}[Strict positive-$\ell$ gap and a refined span bound]
+\label{thm:refined-positive-l-span}
+Assume the hypotheses of
+Theorem~\ref{thm:quantitative-approx-flat-no-go}, let
+$0<\varepsilon<1$, suppose $\ellzero>0$, and write
+$v_{\mathrm{min}}:=\underline v\in(0,1)$. For
+$\alpha\in(0,1-\varepsilon)$, define
+\begin{align}
+c_+(\varepsilon,\alpha;v_{\mathrm{min}})
+&:=\frac{2(1+\varepsilon)
+\bigl[1-\varepsilon-\alpha(1-v_{\mathrm{min}}^2\varepsilon)\bigr]}
+{2+\alpha(1-v_{\mathrm{min}}^2)},
+\label{eq:c-plus-refined}\\
+c_-(\varepsilon,\alpha;v_{\mathrm{min}})
+&:=
+\begin{cases}
+\displaystyle
+\frac{2(1-\varepsilon)
+\bigl[1+\varepsilon-\alpha(1+v_{\mathrm{min}}^2\varepsilon)\bigr]}
+{2+\alpha(1-v_{\mathrm{min}}^2)},
+&\displaystyle
+\alpha\leqslant\frac{1-\varepsilon}{1+\varepsilon},\\[3mm]
+(1-\varepsilon^2)(1-\alpha),
+&\displaystyle
+\alpha>\frac{1-\varepsilon}{1+\varepsilon},
+\end{cases}
+\label{eq:c-minus-refined}\\
+c_*(\varepsilon,\alpha;v_{\mathrm{min}})&:=\min\{c_+,c_-\}.
+\label{eq:c-star-refined}
+\end{align}
+Then $c_*>0$ and
+\begin{equation}
+\Lambda\leqslant
+\mathcal B_*(\varepsilon,\alpha;v_{\mathrm{min}}):=
+\frac{2\varepsilon}{c_*(\varepsilon,\alpha;v_{\mathrm{min}})}
++\frac{1}{1-\varepsilon}
+\log\!\left[\frac{2}{(1+v_{\mathrm{min}}^2)\alpha}\right].
+\label{eq:refined-positive-l-bound}
+\end{equation}
+Moreover, if
+\begin{equation}
+c_0(\varepsilon,\alpha):=
+\frac{2(1+\varepsilon)(1-\varepsilon-\alpha)}{2+\alpha},
+\label{eq:c-zero-old-comparison}
+\end{equation}
+then
+\begin{equation}
+c_*(\varepsilon,\alpha;v_{\mathrm{min}})>c_0(\varepsilon,\alpha),
+\qquad
+\mathcal B_*(\varepsilon,\alpha;v_{\mathrm{min}})
+<\mathcal B_+(\varepsilon,\alpha;v_{\mathrm{min}}).
+\label{eq:strict-positive-l-gap}
+\end{equation}
+In particular, at the optimizer $\alpha_\varepsilon$ in
+Eq.~\eqref{eq:alpha-optimal},
+\begin{equation}
+\begin{aligned}
+\Lambda
+&\leqslant\inf_{0<\alpha<1-\varepsilon}
+\mathcal B_+(\varepsilon,\alpha;v_{\mathrm{min}})
+\\
+&\quad-\delta(\varepsilon,v_{\mathrm{min}}),\\
+\delta(\varepsilon,v_{\mathrm{min}})
+&:=2\varepsilon\left[
+\frac1{c_0(\varepsilon,\alpha_\varepsilon)}
+\right.\\
+&\left.\hspace{2.4cm}
+-\frac1{c_*(\varepsilon,\alpha_\varepsilon;v_{\mathrm{min}})}
+\right]>0.
+\end{aligned}
+\label{eq:strict-gap-from-old-optimum}
+\end{equation}
+Thus the earlier positive-$\ell$ estimate is separated from the true
+trace optimum for every fixed $\varepsilon>0$ and
+$v_{\mathrm{min}}>0$; it is neither
+attained nor asymptotically attained with those parameters fixed.
+\end{theorem}
+
+\begin{proof}
+On the portion of the trace where $y\leqslant\alpha$, the master
+inequality reads $\dot s\geqslant\mathfrak g(u,y,s)$. Put $x=u^2$.
+Differentiation of the drift gives
+\begin{align}
+\partial_y\mathfrak g
+&=\frac{2(1+s)(sx+s+x-3)}{[2+y(1-x)]^2},
+\label{eq:drift-y-derivative}\\
+\partial_x\mathfrak g
+&=\frac{2y(1+s)[(1+s)-y(1-s)]}{[2+y(1-x)]^2}.
+\label{eq:drift-x-derivative}
+\end{align}
+For $|s|\leqslant\varepsilon<1$ and $0\leqslant x<1$, the numerator in
+Eq.~\eqref{eq:drift-y-derivative} is negative. Hence the minimum over
+$0<y\leqslant\alpha$ occurs at $y=\alpha$. For fixed $x$, the derivative
+with respect to $s$ has the sign of
+$$
+2s(x\alpha-1)+\alpha(x-1),
+$$
+which is strictly decreasing in $s$. Any interior stationary point is
+therefore a maximum, and the minimum over
+$[-\varepsilon,\varepsilon]$ occurs at an endpoint. At
+$s=\varepsilon$, Eq.~\eqref{eq:drift-x-derivative} is positive, so the
+minimum over $v_{\mathrm{min}}^2\leqslant x<1$ is $c_+$ at
+$x=v_{\mathrm{min}}^2$. At
+$s=-\varepsilon$, its sign is that of
+$(1-\varepsilon)-\alpha(1+\varepsilon)$. This gives the two cases in
+Eq.~\eqref{eq:c-minus-refined}; in the second case the infimum is the
+limit $x\uparrow1$. It follows that
+$$
+\dot s\geqslant c_*(\varepsilon,\alpha;v_{\mathrm{min}})>0
+$$
+whenever $y\leqslant\alpha$. Since $s$ remains in an interval of width
+$2\varepsilon$, this initial portion has length at most
+$2\varepsilon/c_*$. On the remaining portion,
+$d\log y/dt=1-s\geqslant1-\varepsilon$, while density positivity gives
+$y\leqslant2/(1+u^2)\leqslant2/(1+v_{\mathrm{min}}^2)$. Its length is
+therefore at most
+the logarithmic term in Eq.~\eqref{eq:refined-positive-l-bound}.
+
+It remains to prove that the improvement is strict. Direct subtraction
+gives
+\begin{equation}
+c_+-c_0=
+\frac{2\alpha v_{\mathrm{min}}^2(1+\varepsilon)
+\bigl[1+\varepsilon-\alpha(1-\varepsilon)\bigr]}
+{(2+\alpha)[2+\alpha(1-v_{\mathrm{min}}^2)]}>0.
+\label{eq:c-plus-strict-difference}
+\end{equation}
+If
+$\alpha\leqslant(1-\varepsilon)/(1+\varepsilon)$, monotonicity in $x$
+at $s=-\varepsilon$ gives
+$c_-\geqslant\mathfrak g(0,\alpha,-\varepsilon)$, and
+\begin{equation}
+\mathfrak g(0,\alpha,-\varepsilon)-c_0
+=\frac{4\alpha\varepsilon}{2+\alpha}>0.
+\label{eq:c-minus-first-strict-difference}
+\end{equation}
+In the other case,
+\begin{equation}
+c_--c_0=
+\frac{\alpha(1+\varepsilon)
+\bigl[1+\varepsilon-\alpha(1-\varepsilon)\bigr]}
+{2+\alpha}>0.
+\label{eq:c-minus-second-strict-difference}
+\end{equation}
+Thus $c_*>c_0$. The first term in the old bound is
+$2\varepsilon/c_0$, whereas its logarithmic term is unchanged, proving
+Eqs.~\eqref{eq:strict-positive-l-gap} and
+\eqref{eq:strict-gap-from-old-optimum}.
+\end{proof}
+
+The refined comparison is still not asserted to be optimal. It minimizes
+the drift over a rectangular state enclosure and then adds two exit-time
+estimates. The exact positive-$\ellzero$, positive-$\varepsilon$ supremum
+requires the coupled evolution of $(u,y,s)$, including possible arcs on
+$s=\varepsilon$, and remains open. Equation~\eqref{eq:positive-l-control-system}
+is the precise problem to be solved; any proposed extremal must also obey
+the density boundary and the tangency condition
+$\mathfrak g(u,y,\varepsilon)\leqslant0$ on a sustained upper-slope arc.
+
+The limiting exactly flat problem is more rigid and can be settled.
+
+\begin{proposition}[Sharp exact-flat limit for positive $\ell$]
+\label{prop:sharp-positive-l-exact-flat-limit}
+Fix $0<v_0<1$ and $\ellzero>0$. Among real-analytic exactly flat traces
+with strict positive density and $v_{zz}<0$, the supremum of the radial
+ratio is
+\begin{equation}
+\sup\frac{R_2}{R_1}=\frac{2}{1+v_0^2}.
+\label{eq:positive-l-exact-flat-supremum}
+\end{equation}
+The supremum is approached by genuine reflection-symmetric analytic
+solutions of the two-dimensional VFE. It is not attained within the
+strict-margin class.
+\end{proposition}
+
+\begin{proof}
+The upper bound is Eq.~\eqref{eq:flat-trace-span-ratio}. Conversely, choose
+closed intervals compactly contained in
+$$
+\frac{v_0}{\ellzero}<r<
+\frac{2v_0}{\ellzero(1+v_0^2)}
+$$
+whose endpoint ratio tends to $2/(1+v_0^2)$. The analytic trace
+$u\equiv v_0$ has strict density because
+$\ellzero r<2v_0/(1+v_0^2)$, while
+Eq.~\eqref{eq:vzz-x-form} gives $v_{zz}<0$ because
+$\ellzero r>v_0$. Lemma~\ref{lem:analytic-lifting-trace-controls}, or
+equivalently the analytic auxiliary Cauchy construction used in
+Theorem~\ref{thm:local-flat-trace-existence}, supplies a genuine analytic
+solution near each interval. The two strict inequalities prevent an
+endpoint from attaining the limiting ratio.
+\end{proof}
+
+Finally, the nonpositive-$\ellzero$ result admits a stronger sharpness
+statement than attainment by the endpoint $\ellzero=0$ alone.
+
+\begin{proposition}[Sharpness throughout the nonpositive-$\ell$ closure]
+\label{prop:strict-negative-l-asymptotic-sharpness}
+For every $0<\varepsilon<1$, the bound
+$\Lambda\leqslant2\operatorname{artanh}\varepsilon$ is attained at
+$\ellzero=0$ by Eq.~\eqref{eq:sharp-span-extremal}. If
+$\ellzero<0$, every nondegenerate trace satisfying the same hypotheses
+obeys the strict inequality
+\begin{equation}
+\Lambda<2\operatorname{artanh}\varepsilon.
+\label{eq:strict-negative-l-span}
+\end{equation}
+Nevertheless, the right-hand side is the supremum over the strict class
+$\ellzero<0$: there is a sequence of genuine analytic, reflection-symmetric,
+vertically neutral solutions with $\ellzero\uparrow0$ whose spans converge
+to $2\operatorname{artanh}\varepsilon$.
+\end{proposition}
+
+\begin{proof}
+For $\ellzero=0$, let
+$u(t)=a\cosh(t-t_0)$ and $s(t)=\tanh(t-t_0)$. Then
+$\dot s=1-s^2$, and
+$$
+\eta=ru=\frac a2\left(\frac{r^2}{r_0}+r_0\right)
+$$
+satisfies $\mathcal L(2\eta)=0$. Hence the solution is independent of
+$z$, has $v_{zz}=0$, and traverses from $s=-\varepsilon$ to
+$s=\varepsilon$ in exactly
+$2\operatorname{artanh}\varepsilon$. Taking $a$ sufficiently small gives
+strict subluminality and positive density on the compact annulus.
+
+For $\ellzero<0$, the exact factorization
+\eqref{eq:sharp-negative-l-factorization} is strictly positive because
+$y<0$, $1+s>0$, and
+$3-u^2-(1+u^2)s>0$. Since $A>0$, it follows that
+$\dot s>1-s^2$ pointwise. Integration proves
+Eq.~\eqref{eq:strict-negative-l-span}.
+
+To prove asymptotic sharpness, keep the preceding radial auxiliary datum
+$\mathcal F_0=2\eta_0=c_2r^2+c_0$ fixed. For all sufficiently small
+negative $\ellzero$, the analytic implicit-function theorem solves
+$$
+\Phi_{\ellzero}(r,\eta_{\ellzero}(r))=\mathcal F_0(r)
+$$
+on a common annulus, because
+$\partial_\eta\Phi_0=2$. The resulting $\eta_{\ellzero}$ is independent
+of $z$ and solves the exact VFE. Its speed, slope, and density converge
+uniformly with their required derivatives to the strict-margin
+$\ellzero=0$ solution. The two transverse crossings
+$s=-\varepsilon$ and $s=\varepsilon$ persist by the implicit-function
+theorem because $\dot s=1-\varepsilon^2>0$ at the limiting crossings.
+Their time separation therefore converges to
+$2\operatorname{artanh}\varepsilon$. This construction proves sharpness
+within genuine analytic PDE solutions, not merely within formal trace
+controls.
+\end{proof}

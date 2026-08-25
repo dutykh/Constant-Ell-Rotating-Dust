@@ -1,0 +1,584 @@
+\section{Physical covariant variation and conditional string extensions}
+\label{sec:physical-variational-string}
+
+The auxiliary action of Sect.~\ref{sec:variational-multisymplectic} is an
+exact and useful structure, but it is not an action for the spacetime and
+its matter. This section supplies the physical variational comparison. We
+first formulate Einstein gravity coupled to vortical dust and identify its
+covariant presymplectic and boundary data. We then ask a deliberately
+separate question: what survives if the exterior theory is enlarged to
+Einstein--Maxwell--dilaton--axion gravity? The answer includes a rigidity
+theorem, but not a string-theoretic explanation of the rotating-dust
+interior.
+
+Throughout this section the spacetime signature is $(-,+,+,+)$,
+$G_{\rm N}$ is Newton's constant, and all orientations and normal directions
+are fixed before boundary quantities are compared.
+
+\subsection{Einstein gravity with vortical dust}
+
+A pressureless fluid is not adequately represented by one velocity
+potential when vorticity is present. Brown's material-coordinate action
+keeps the particle current and three comoving labels as independent fields
+~\cite{Brown1993CQG}. Let $\mathcal J^\mu$ be a future-directed vector density,
+let $\alpha^A$ be material labels, and let $\vartheta$ and $\beta_A$ be
+Clebsch variables, where $A=1,2,3$. Define
+\begin{equation}
+ |\mathcal J|_g:=
+ \sqrt{-g_{\mu\nu}\mathcal J^\mu\mathcal J^\nu},
+ \qquad
+ n:=\frac{|\mathcal J|_g}{\sqrt{-g}},
+ \qquad
+ u^\mu:=\frac{\mathcal J^\mu}{|\mathcal J|_g}.
+ \label{eq:physical-Brown-variables}
+\end{equation}
+For particles of constant rest mass $m>0$, the dust action is
+\begin{equation}
+ \mathcal S_{\rm B}[g,\mathcal J,\vartheta,\alpha,\beta]
+ =\int_{\mathcal M}
+ \left[-m|\mathcal J|_g
+ +\mathcal J^\mu
+ \left(\partial_\mu\vartheta
+ +\beta_A\partial_\mu\alpha^A\right)\right]\,d^4x.
+ \label{eq:physical-Brown-action}
+\end{equation}
+This is the $\rho(n)=mn$ specialization of the perfect-fluid action. Its
+independent variations give
+\begin{align}
+\partial_\mu\mathcal J^\mu&=0,
+&
+\mathcal J^\mu\partial_\mu\alpha^A&=0,
+ \nonumber\\
+\partial_\mu(\beta_A\mathcal J^\mu)&=0,
+&
+m u_\mu+\partial_\mu\vartheta
++\beta_A\partial_\mu\alpha^A&=0.
+ \label{eq:physical-Brown-transport}
+\end{align}
+Metric variation produces
+\begin{equation}
+ T^{\rm d}_{\mu\nu}=mn\,u_\mu u_\nu.
+ \label{eq:physical-Brown-stress}
+\end{equation}
+Moreover, Eq.~\eqref{eq:physical-Brown-transport} implies
+\begin{equation}
+ m\,d u^\flat=-d\beta_A\wedge d\alpha^A,
+ \label{eq:physical-Brown-vorticity}
+\end{equation}
+so the action admits genuine vortical flow. In particular, the stationary
+rotating dust considered in this paper need not be forced into an
+irrotational scalar ansatz.
+The constant shift $\vartheta\mapsto\vartheta+c$ has Noether current
+$\mathcal J^\mu$, while material-label transformations preserving
+$d\vartheta+\beta_A d\alpha^A$ encode the circulation symmetries. These are
+matter symmetries, not replacements for spacetime diffeomorphism charges.
+
+On a spacetime region with smooth non-null boundary components, the
+physical Dirichlet action is
+\begin{align}
+ \mathcal S_{\rm phys}
+ =&\frac{1}{16\pi G_{\rm N}}
+ \int_{\mathcal M}R\,\epsilon_g
+ +\frac{1}{8\pi G_{\rm N}}
+ \int_{\partial\mathcal M}\epsilon_n K\,\epsilon_h
+ +\mathcal S_{\rm B},
+ \label{eq:physical-EH-GHY-Brown-action}
+\end{align}
+where $\epsilon_n=g(n,n)=\pm1$, $h$ is the induced metric, and
+$K=h^{ab}K_{ab}$ in the convention of
+Eq.~\eqref{eq:extrinsic-curvature-convention}. Corner terms must be added
+when boundary components meet non-smoothly. The second term in
+Eq.~\eqref{eq:physical-EH-GHY-Brown-action} is the
+Gibbons--Hawking--York term in these conventions
+~\cite{GibbonsHawking1977PRD}.
+
+For the bulk Lagrangian four-form $\boldsymbol L_{\rm phys}$, write its
+first variation as
+\begin{equation}
+ \delta\boldsymbol L_{\rm phys}
+ =\boldsymbol E(\Psi)\cdot\delta\Psi
+ +d\boldsymbol\theta(\Psi;\delta\Psi),
+ \qquad
+ \Psi=(g,\mathcal J,\vartheta,\alpha,\beta).
+ \label{eq:physical-covariant-first-variation}
+\end{equation}
+The Lee--Wald presymplectic current and the diffeomorphism Noether current
+are, respectively,
+\begin{align}
+ \boldsymbol\omega(\Psi;\delta_1\Psi,\delta_2\Psi)
+ &:={\delta_1}\boldsymbol\theta(\Psi;\delta_2\Psi)
+ -{\delta_2}\boldsymbol\theta(\Psi;\delta_1\Psi),
+ \label{eq:physical-Lee-Wald-current}\\
+ \boldsymbol J_\xi
+ &:=\boldsymbol\theta(\Psi;\mathcal L_\xi\Psi)
+ -\iota_\xi\boldsymbol L_{\rm phys}.
+ \label{eq:physical-diffeomorphism-current}
+\end{align}
+For solutions and linearized solutions,
+$d\boldsymbol\omega=0$. Diffeomorphism covariance gives
+$\boldsymbol J_\xi=\boldsymbol C_\xi+d\boldsymbol Q_\xi$, with the
+constraint term $\boldsymbol C_\xi$ vanishing on shell. Subject to the
+chosen boundary conditions and integrability of the right-hand side, the
+Hamiltonian variation is
+\begin{equation}
+ \delta H_\xi
+ =\int_{\partial C}
+ \left(\delta\boldsymbol Q_\xi
+ -\iota_\xi\boldsymbol\theta\right)
+ \label{eq:physical-Hamiltonian-variation}
+\end{equation}
+on a Cauchy surface $C$~\cite{LeeWald1990JMP,IyerWald1994PRD}. Boundary
+counterterms and corners shift the representative of
+$\boldsymbol\theta$ and must be included before a charge is declared
+finite or integrable. Equations~\eqref{eq:physical-Lee-Wald-current}--\eqref{eq:physical-Hamiltonian-variation}
+refer to the coupled metric--dust theory. They cannot be replaced by the
+weighted meridional current of
+Eq.~\eqref{eq:ms-current-form}.
+In particular, choosing $\xi$ to be the stationary or axial Killing field
+defines physical energy or angular-momentum variations only after the
+asymptotic normalization, boundary conditions, and integrability test have
+been supplied.
+
+The GHY term also makes the relation between variational and Darmois data
+precise. For a non-null three-boundary define the gravitational momentum
+density conjugate to $h^{ab}$ by
+\begin{equation}
+ \Pi_{ab}:=
+ \frac{\epsilon_n\sqrt{|h|}}{16\pi G_{\rm N}}
+ \left(K_{ab}-Kh_{ab}\right).
+ \label{eq:physical-boundary-momentum}
+\end{equation}
+
+\begin{proposition}[Darmois data as equality of boundary momenta]
+\label{prop:physical-Darmois-momentum}
+Let two $C^2$ spacetime regions meet across a non-null hypersurface
+$\Sigma$, and express both second fundamental forms using one common normal
+orientation. Once the first fundamental forms have been identified,
+\begin{equation}
+ [\Pi_{ab}]=0
+ \quad\Longleftrightarrow\quad
+ [K_{ab}]=0.
+ \label{eq:physical-momentum-Darmois-equivalence}
+\end{equation}
+Thus a shell-free stationary point of the joined Dirichlet action has the
+complete Darmois data. Equality only of selected Killing-block derivatives
+does not suffice.
+\end{proposition}
+
+\begin{proof}
+With $h_{ab}$ common, $[\Pi_{ab}]=0$ is equivalent to
+$[K_{ab}]-h_{ab}[K]=0$. Contracting with the inverse three-metric gives
+$[K]-3[K]=-2[K]=0$. Hence $[K]=0$, and substitution gives
+$[K_{ab}]=0$. The converse is immediate. With the outward normals used in
+the two separate actions, one first reverses one normal to obtain the
+common-orientation convention. A nonzero momentum jump is the variational
+counterpart of an Israel surface stress
+~\cite{Darmois1927,Israel1966NCB,MarsSenovilla1993CQG}.
+\end{proof}
+
+There is one further reduction caveat. Substituting a stationary,
+axisymmetric ansatz directly into
+Eq.~\eqref{eq:physical-EH-GHY-Brown-action} and only then varying is valid
+only when the relevant principle of symmetric criticality holds. Its group
+cohomology and isotropy hypotheses are nontrivial in general relativity
+~\cite{FelsTorre2002CQG}. The safe logical route in the present paper is to
+derive the covariant equations and boundary variation first and then impose
+the two Killing symmetries. No auxiliary scalar action establishes this
+missing equivalence.
+
+\subsection{Einstein-frame EMDA and neutral axidilaton rigidity}
+
+We now change the field content. In a standard four-dimensional
+Einstein-frame normalization, the bosonic EMDA bulk action is
+\begin{align}
+ \mathcal S_{\rm EMDA}^{E}
+ =\frac{1}{16\pi G_{\rm N}}\int_{\mathcal M}\epsilon_E
+ \bigg[&R_E-2(\nabla\varphi)^2
+ -\frac12e^{4\varphi}(\nabla\kappa)^2
+ -e^{-2\varphi}F_{\mu\nu}F^{\mu\nu}
+ \nonumber\\
+ &-\kappa F_{\mu\nu}{}^\star F^{\mu\nu}\bigg]
+ +\mathcal S_{\rm B}[g_E].
+ \label{eq:physical-EMDA-action}
+\end{align}
+Here $\varphi$ is the dilaton, $\kappa$ is the axion, $F=dA$, and the
+dust is neutral and minimally coupled only to $g_E$. This convention is
+equivalent, after the signature translation, to the primary EMDA actions
+used in Refs.~\cite{GarciaGaltsovKechkin1995PRL,GaltsovKechkin1994PRD}.
+The gravitational boundary term has the form already displayed in
+Eq.~\eqref{eq:physical-EH-GHY-Brown-action} with $g=g_E$.
+
+When $F=0$, the scalar equations are
+\begin{equation}
+ \nabla_\mu\!\left(e^{4\varphi}\nabla^\mu\kappa\right)=0,
+ \qquad
+ \Box_E\varphi=\frac12e^{4\varphi}(\nabla\kappa)^2.
+ \label{eq:physical-neutral-axidilaton-equations}
+\end{equation}
+There is no dust source in either equation because
+$\mathcal S_{\rm B}[g_E]$ is independent of $\varphi$ and $\kappa$.
+For invariant scalars in the circular metric
+\begin{equation}
+ ds_E^2=G_{AB}dx^A dx^B
+ +e^\mu(dr^2+dz^2),
+ \qquad
+ \det G=-r^2,
+ \label{eq:physical-EMDA-circular-metric}
+\end{equation}
+Eq.~\eqref{eq:physical-neutral-axidilaton-equations} becomes
+\begin{equation}
+ \partial_a\!\left(re^{4\varphi}\partial_a\kappa\right)=0,
+ \qquad
+ \partial_a(r\partial_a\varphi)
+ =\frac r2e^{4\varphi}|\nabla_{rz}\kappa|^2,
+ \qquad a\in\{r,z\}.
+ \label{eq:physical-neutral-orbit-equations}
+\end{equation}
+
+\begin{theorem}[Neutral axidilaton no-hair theorem]
+\label{thm:physical-neutral-axidilaton-rigidity}
+Let a connected, horizonless, stationary and axisymmetric solution of
+Eq.~\eqref{eq:physical-EMDA-action} satisfy $F=0$. Assume all of the
+following.
+
+\begin{enumerate}
+\item The spacetime is globally regular and asymptotically flat with one
+end, the axial action has a regular fixed axis, and the complete orbit
+space is a half-plane with no excised inner boundary. It admits one global
+circular Weyl chart $(r,z)$ in which
+Eq.~\eqref{eq:physical-EMDA-circular-metric} holds with
+$\det G=-r^2$, the axis is $r=0$, and the orbit measure in the reduced
+scalar equations is $r\,dr\,dz$.
+
+\item The neutral dust is minimally coupled to $g_E$. Across every internal
+matter--vacuum interface, $\varphi$, $\kappa$, and their canonical normal
+fluxes are continuous; in particular there is no scalar surface source.
+
+\item The invariant scalars are $C^2$ away from interfaces, $C^1$ in the
+global weak sense, and regular at the axis. The axion has a globally
+single-valued real lift, so there is no axionic monodromy.
+
+\item With $R=(r^2+z^2)^{1/2}$, constants $\varphi_\infty$ and
+$\kappa_\infty$ exist such that
+\begin{align}
+ \varphi-\varphi_\infty&=O(R^{-1}),
+ &
+ |\nabla_{rz}\varphi|&=O(R^{-2}),
+ \nonumber\\
+ \kappa-\kappa_\infty&=O(R^{-1}),
+ &
+ |\nabla_{rz}\kappa|&=O(R^{-2}).
+ \label{eq:physical-axidilaton-falloff}
+\end{align}
+The weighted scalar energies
+\begin{equation}
+ \int r|\nabla_{rz}\varphi|^2\,dr\,dz,
+ \qquad
+ \int re^{4\varphi}|\nabla_{rz}\kappa|^2\,dr\,dz
+ \label{eq:physical-axidilaton-energies}
+\end{equation}
+are finite over the orbit space.
+\end{enumerate}
+
+Then
+\begin{equation}
+ \kappa\equiv\kappa_\infty,
+ \qquad
+ \varphi\equiv\varphi_\infty.
+ \label{eq:physical-axidilaton-rigidity-conclusion}
+\end{equation}
+Consequently, appending a neutral, source-free axidilaton sector cannot
+dress a globally regular galaxy satisfying these hypotheses.
+\end{theorem}
+
+\begin{proof}
+Let $D_R$ be the intersection of the orbit half-plane with a Euclidean
+half-disk of radius $R$, with small half-disks around any intermediate
+corners used only during the exhaustion. Multiply the first equation in
+Eq.~\eqref{eq:physical-neutral-orbit-equations} by
+$\kappa-\kappa_\infty$ and integrate by parts. The interface terms cancel
+because both the scalar and its canonical normal flux are continuous.
+Regularity makes $\kappa$ and its first derivatives bounded at the axis,
+where the factor $r$ makes the boundary term vanish. On the outer
+semicircle, Eq.~\eqref{eq:physical-axidilaton-falloff} gives
+\begin{equation}
+ \int_{\partial D_R}
+ r e^{4\varphi}(\kappa-\kappa_\infty)
+ \partial_n\kappa\,ds=O(R^{-1}).
+ \label{eq:physical-axion-boundary-estimate}
+\end{equation}
+There is no horizon or other inner boundary. Passing to the limit, using
+Eq.~\eqref{eq:physical-axidilaton-energies}, yields
+\begin{equation}
+ \int_D re^{4\varphi}|\nabla_{rz}\kappa|^2\,dr\,dz=0.
+ \label{eq:physical-axion-energy-zero}
+\end{equation}
+The integrand is nonnegative and $e^{4\varphi}>0$, so connectedness gives
+$\kappa\equiv\kappa_\infty$.
+
+The second equation in
+Eq.~\eqref{eq:physical-neutral-orbit-equations} now reduces to
+$\partial_a(r\partial_a\varphi)=0$. Multiplication by
+$\varphi-\varphi_\infty$ and the identical exhaustion argument give
+\begin{equation}
+ \int_D r|\nabla_{rz}\varphi|^2\,dr\,dz=0.
+ \label{eq:physical-dilaton-energy-zero}
+\end{equation}
+Thus $\varphi\equiv\varphi_\infty$, proving
+Eq.~\eqref{eq:physical-axidilaton-rigidity-conclusion}.
+\end{proof}
+
+\begin{remark}[Sharp logical content of the rigidity theorem]
+\label{rem:physical-axidilaton-rigidity-scope}
+The proof fails, for identifiable reasons, in the presence of gauge flux,
+direct matter--scalar coupling, a scalar-charged shell, a horizon or another
+inner boundary, a second asymptotic end, axionic monodromy, singularities, or
+insufficient decay. These are possible mechanisms for nonconstant scalars;
+the theorem does not assert that any of them produces an acceptable galaxy.
+\end{remark}
+
+\subsection{Exact Einstein--string-frame dust dictionary}
+
+In four dimensions and in the normalization of
+Eq.~\eqref{eq:physical-EMDA-action}, fix the conformal relation
+\begin{equation}
+ g_E=e^{-2\varphi}g_s,
+ \qquad
+ \sqrt{-g_E}=e^{-4\varphi}\sqrt{-g_s}.
+ \label{eq:physical-frame-relation}
+\end{equation}
+This is a field redefinition. Which frame is minimally coupled is an
+additional physical choice about the matter sector.
+
+\begin{proposition}[Conformal transformation of the Brown dust action]
+\label{prop:physical-frame-dust}
+Keep the vector density $\mathcal J^\mu$ and the Clebsch variables fixed
+under Eq.~\eqref{eq:physical-frame-relation}. Then
+\begin{equation}
+ |\mathcal J|_E=e^{-\varphi}|\mathcal J|_s,
+ \qquad
+ n_E=e^{3\varphi}n_s,
+ \qquad
+ u_E^\mu=e^{\varphi}u_s^\mu,
+ \label{eq:physical-frame-current-dictionary}
+\end{equation}
+and the Einstein-minimal action
+Eq.~\eqref{eq:physical-Brown-action} becomes exactly
+\begin{equation}
+ \mathcal S_{\rm B}^{E}
+ =\int_{\mathcal M}\left[
+ -m e^{-\varphi}|\mathcal J|_s
+ +\mathcal J^\mu
+ \left(\partial_\mu\vartheta
+ +\beta_A\partial_\mu\alpha^A\right)
+ \right]\,d^4x.
+ \label{eq:physical-string-frame-dust-action}
+\end{equation}
+Thus the same particles have string-frame mass
+$m_s(\varphi)=me^{-\varphi}$; they are not minimally coupled to $g_s$.
+
+Let
+\begin{equation}
+ T^{s}_{\mu\nu}:=
+ -\frac{2}{\sqrt{-g_s}}
+ \frac{\delta\mathcal S_{\rm B}^{E}}{\delta g_s^{\mu\nu}},
+ \qquad
+ \rho_s:=m e^{-\varphi}n_s.
+ \label{eq:physical-string-stress-definition}
+\end{equation}
+On the dust equations,
+\begin{align}
+ T_s^{\mu\nu}&=\rho_s u_s^\mu u_s^\nu,
+ \label{eq:physical-string-dust-stress}\\
+ \nabla^s_\mu T_s^{\mu}{}_{\nu}
+ &=\rho_s\partial_\nu\varphi,
+ \label{eq:physical-string-stress-nonconservation}\\
+ u_s^\mu\nabla^s_\mu u_s^\nu
+ &=\left(g_s^{\nu\lambda}+u_s^\nu u_s^\lambda\right)
+ \partial_\lambda\varphi.
+ \label{eq:physical-string-fifth-force}
+\end{align}
+Conversely, if constant-mass dust is postulated to be minimal in the string
+frame, its Einstein-frame mass is $m_E(\varphi)=me^{\varphi}$, and the
+right-hand sides of
+Eqs.~\eqref{eq:physical-string-stress-nonconservation} and
+~\eqref{eq:physical-string-fifth-force} acquire the opposite sign after
+interchanging $s$ and $E$.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:physical-frame-current-dictionary} follows directly
+from the definition
+$|\mathcal J|^2=-g_{\mu\nu}\mathcal J^\mu\mathcal J^\nu$ and the volume
+scaling in Eq.~\eqref{eq:physical-frame-relation}. The current--potential
+term is a coordinate density and is conformally unchanged, which proves
+Eq.~\eqref{eq:physical-string-frame-dust-action}.
+
+The scalar source of this action is
+\begin{equation}
+ \frac{1}{\sqrt{-g_s}}
+ \frac{\delta\mathcal S_{\rm B}^{E}}{\delta\varphi}=\rho_s.
+ \label{eq:physical-string-scalar-source}
+\end{equation}
+Diffeomorphism invariance therefore gives the Ward identity
+Eq.~\eqref{eq:physical-string-stress-nonconservation}. Particle-number
+conservation remains $\nabla^s_\mu(n_s u_s^\mu)=0$. Projecting
+Eq.~\eqref{eq:physical-string-stress-nonconservation} orthogonally to
+$u_s$ proves Eq.~\eqref{eq:physical-string-fifth-force}. Starting instead
+from $-m|\mathcal J|_s$ gives
+$-me^{\varphi}|\mathcal J|_E$, which proves the converse statement.
+\end{proof}
+
+The fifth force in Eq.~\eqref{eq:physical-string-fifth-force} is not a
+coordinate artifact: it records which metric defines constant particle
+masses and freely falling matter. A conformal rewriting neither creates a
+new solution nor preserves the geodesic-dust interpretation in both frames.
+In particular, the neutral no-hair theorem above assumes Einstein-minimal
+dust; changing the matter coupling changes its scalar equation and its
+hypotheses.
+
+\subsection{Conditional hidden symmetries, Buscher duality, and junctions}
+
+Source-free stationary EMDA admits a finite-dimensional hidden
+$Sp(4,\mathbb R)$ symmetry, denoted $Sp(2,\mathbb R)$ in part of the physics
+literature, and the two-Killing reduction admits a Lax representation and
+an affine extension
+~\cite{GaltsovKechkin1994PRD,Galtsov1995PRL}. These statements concern the
+source-free reduced equations. With dust present, the matrix equation has
+the schematic form
+\begin{equation}
+ \partial_r\!\left(r\mathcal M_r\mathcal M^{-1}\right)
+ +\partial_z\!\left(r\mathcal M_z\mathcal M^{-1}\right)
+ =\mathcal J_{\rm d}.
+ \label{eq:physical-sourced-EMDA-matrix-equation}
+\end{equation}
+No zero-curvature representation has been established for a generic
+nonzero source $\mathcal J_{\rm d}$. A hidden-symmetry transformation may
+therefore be applied to a valid vacuum exterior seed, but not presumed to
+map the rotating-dust interior to another solution with the same matter.
+
+Buscher duality is a different operation: it acts locally on a string-frame
+sigma-model background $(g_s,B,\Phi_s)$ with an Abelian isometry
+~\cite{Buscher1987PLB,Buscher1988PLB}. In units in which $\alpha'=1$ and the
+sigma-model metric components are dimensionless, let $y$ be the isometry
+coordinate and let $i,j$ denote the other coordinates. The Abelian Buscher
+rules are
+\begin{align}
+ \widetilde g_{yy}&=\frac{1}{g_{yy}},
+ &
+ \widetilde g_{yi}&=\frac{B_{yi}}{g_{yy}},
+ &
+ \widetilde B_{yi}&=\frac{g_{yi}}{g_{yy}},
+ \label{eq:physical-Buscher-y}\\
+ \widetilde g_{ij}
+ &=g_{ij}-\frac{g_{yi}g_{yj}-B_{yi}B_{yj}}{g_{yy}},
+ &
+ \widetilde B_{ij}
+ &=B_{ij}-\frac{g_{yi}B_{yj}-B_{yi}g_{yj}}{g_{yy}},
+ \label{eq:physical-Buscher-transverse}\\
+ \widetilde\Phi_s
+ &=\Phi_s-\frac12\log g_{yy}.
+ \label{eq:physical-Buscher-dilaton}
+\end{align}
+For the spacelike duality used below they require $g_{yy}>0$ and a
+well-defined local isometry quotient.
+Restoring dimensions replaces the logarithm by the corresponding
+dimensionless ratio in string units.
+
+For illustration only, suppose that the helical plateau
+Eq.~\eqref{eq:helical-plateau-metric} is used as a string-frame seed, with
+constant dilaton, vanishing initial $B$-field, and the constant
+Einstein--string conformal factor absorbed into the normalization of the
+displayed metric. Taking $y=\phi$ then gives
+$g_{\phi\phi}=r^2-q_0^2$ and $g_{t\phi}=q_0$, and hence
+\begin{equation}
+ \widetilde B_{\phi t}=\frac{q_0}{r^2-q_0^2},
+ \qquad
+ \widetilde g_{\phi\phi}=\frac{1}{r^2-q_0^2}.
+ \label{eq:physical-Buscher-plateau}
+\end{equation}
+This conditional dual is singular at the chronology cylinder. More generally, axial
+duality at a regular fixed axis has $g_{\phi\phi}\sim r^2$, so
+$\widetilde g_{\phi\phi}\sim r^{-2}$ and
+$\widetilde\Phi_s\sim\Phi_s-\log r$. It is therefore neither a regular
+axis nor a global galactic completion.
+
+The field enlargement also enlarges the junction problem. In the
+conventions of Eq.~\eqref{eq:physical-EMDA-action}, introduce the
+antisymmetric Maxwell excitation tensor
+\begin{equation}
+ \mathcal G^{\mu\nu}
+ :=e^{-2\varphi}F^{\mu\nu}
+ +\kappa{}^\star F^{\mu\nu},
+ \qquad
+ \nabla_\mu{}^\star F^{\mu\nu}=0,
+ \qquad
+ \nabla_\mu\mathcal G^{\mu\nu}=0
+\label{eq:physical-EMDA-excitation}
+\end{equation}
+in a source-free neighbourhood of the matching surface.
+
+\begin{proposition}[Necessary shell-free EMDA junction data]
+\label{prop:physical-EMDA-junction-data}
+Let a non-null hypersurface $\Sigma$ separate two piecewise $C^2$ EMDA
+solutions. Assume there is no gravitational shell, scalar surface source,
+electric surface current, or magnetic surface current. In a common normal
+orientation, the distributional field equations require
+\begin{align}
+ [h_{ab}]&=0,
+ &
+ [K_{ab}]&=0,
+ \label{eq:physical-EMDA-gravity-junction}\\
+ [\varphi]&=0,
+ &
+ [n(\varphi)]&=0,
+ \label{eq:physical-EMDA-dilaton-junction}\\
+ [\kappa]&=0,
+ &
+ [e^{4\varphi}n(\kappa)]&=0,
+ \label{eq:physical-EMDA-axion-junction}\\
+ [i^*F]&=0,
+ &
+ [n_\mu\mathcal G^{\mu a}]&=0.
+ \label{eq:physical-EMDA-Maxwell-junction}
+\end{align}
+Here $i:\Sigma\hookrightarrow\mathcal M$ is the inclusion. These are
+necessary local data; they do not prove that a global exterior realizing
+them exists.
+\end{proposition}
+
+\begin{proof}
+The first line is Proposition~\ref{prop:physical-Darmois-momentum}. A jump
+of either scalar itself would produce an inadmissible derivative of a delta
+distribution in its second-order equation, while integration of the scalar
+equations across a Gaussian pillbox gives the two normal-flux conditions.
+Writing a piecewise smooth two-form as
+$F=F^+\mathbf 1_++F^-\mathbf 1_-$ shows that the singular part of $dF$ is
+the normal one-form wedged with $[F]$; its vanishing is equivalent to
+$[i^*F]=0$. Integrating
+$\nabla_\mu\mathcal G^{\mu\nu}=0$ across the same pillbox proves the last
+condition. This is the non-null, source-free specialization of the general
+distributional scalar-junction framework
+~\cite{BarrabesBressange1997CQG}.
+\end{proof}
+
+Applying a duality only to the exterior generally violates one or more of
+Eqs.~\eqref{eq:physical-EMDA-gravity-junction}--\eqref{eq:physical-EMDA-Maxwell-junction}
+and creates a shell or surface charge. Even when the local junction data
+pass, asymptotic normalization, NUT charge, gauge charge, scalar charge,
+axis regularity, conicity, topology, and causality must all be rechecked.
+
+\begin{remark}[Non-implications]
+\label{rem:physical-string-nonimplications}
+Nothing in this section implies that the dust interior is an EMDA solution
+with nonconstant scalars, that an EMDA hidden symmetry survives a dust
+source, or that Buscher duality preserves pressureless geodesic dust. A
+pressureless dust element is not a fundamental-string worldsheet or a
+string gas; those sources have additional tension data. The helical flat
+quotient is not evidence for a string source. A transformed finite-parameter
+black-hole exterior is not a generic galactic exterior. Finally, calling
+the retained $U(1)$ field electromagnetic or heterotic requires a specified
+compactification and matter-coupling prescription. The only unconditional
+new result in the string-effective direction is the neutral rigidity
+theorem under its stated hypotheses.
+\end{remark}

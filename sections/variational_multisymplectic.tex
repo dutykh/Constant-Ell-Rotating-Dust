@@ -1,0 +1,584 @@
+\section{Variational and multisymplectic geometry of the auxiliary field}
+\label{sec:variational-multisymplectic}
+
+The linearizing potential does more than simplify the velocity-field
+equation. It places the regular constant-$\ellzero$ sheets inside an exact
+covariant Hamiltonian system, identifies the lower density root as a
+degeneracy of the Legendre map, and turns the Green identities into a
+multisymplectic conservation law. This structure is useful only if its
+logical level is kept clear. It belongs to the auxiliary meridional equation;
+it is not, by itself, the physical phase space or energy of the complete
+Einstein--dust system. We use the standard variational-bicomplex,
+multisymplectic, and covariant-polymomentum conventions of
+Refs.~\cite{Anderson1992VariationalBicomplex,MarsdenPatrickShkoller1998CMP,
+Kanatchikov1998RepMathPhys}.
+
+Throughout this section, $D$ is an oriented, connected, bounded domain with piecewise
+$C^2$ boundary whose closure is contained in $\{r>0\}$, and
+$d^2x:=dr\wedge dz$. Repeated meridional indices $i,j\in\{r,z\}$ are summed
+with the Euclidean metric. The outward unit normal and arclength measure on
+$\partial D$ are denoted by $n$ and $ds$, respectively.
+
+\subsection{Weighted action and its singular pullback}
+
+Recall the auxiliary operator
+\begin{equation}
+\mathcal L\mathcal F
+:=\mathcal F_{rr}-\frac{1}{r}\mathcal F_r+\mathcal F_{zz}
+=r\,\partial_i\!\left(\frac{\partial_i\mathcal F}{r}\right).
+\label{eq:ms-weighted-operator}
+\end{equation}
+Its natural action is
+\begin{equation}
+\mathcal A_D[\mathcal F]
+:=\frac12\int_D\frac{|\nabla\mathcal F|^2}{r}\,dr\,dz.
+\label{eq:ms-weighted-action}
+\end{equation}
+
+\begin{proposition}[Weighted variational principle]
+\label{prop:ms-weighted-variation}
+Let $\mathcal F\in H^1(D)$, and assume sufficient regularity whenever a
+classical trace or derivative is used. For every smooth variation $f$,
+\begin{equation}
+\delta\mathcal A_D[\mathcal F](f)
+=-\int_D\frac{\mathcal L\mathcal F}{r}f\,dr\,dz
++\int_{\partial D}\frac{\partial_n\mathcal F}{r}f\,ds.
+\label{eq:ms-first-variation}
+\end{equation}
+Consequently, the critical points for fixed Dirichlet data are precisely the
+weak solutions of $\mathcal L\mathcal F=0$. The action is strictly convex on
+each affine Dirichlet class and is strictly convex modulo constants when no
+Dirichlet trace is fixed.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:ms-first-variation} is the weighted divergence theorem.
+The second variation is $\int_D|\nabla f|^2/r\,dr\,dz$, which proves the
+convexity statements.
+\end{proof}
+
+We next pull back the action through the constant-$\ellzero$ linearizing
+map. On $\eta>0$, set
+\begin{align}
+\Phi_{\ellzero}(r,\eta)
+&:=2\eta+\ellzero r^2\log\!\left(\frac{\eta}{\eta_*}\right)
+-\frac{\ellzero}{2}\eta^2,
+\qquad \eta_*>0,
+\label{eq:ms-Phi-definition}\\
+A(r,\eta)
+&:=\partial_\eta\Phi_{\ellzero}
+=2+\frac{\ellzero r^2}{\eta}-\ellzero\eta,
+\qquad
+B(r,\eta)
+:=\left.\partial_r\Phi_{\ellzero}\right|_\eta
+=2\ellzero r\log\!\left(\frac{\eta}{\eta_*}\right).
+\label{eq:ms-A-B-definition}
+\end{align}
+Thus
+\begin{equation}
+\mathcal F_r=B+A\eta_r,
+\qquad
+\mathcal F_z=A\eta_z.
+\label{eq:ms-Phi-total-derivatives}
+\end{equation}
+
+\begin{theorem}[Variational equivalence and fold degeneracy]
+\label{thm:ms-pullback-fold}
+The pullback of Eq.~\eqref{eq:ms-weighted-action} is the first-order action
+with density
+\begin{equation}
+L_\eta
+=\frac{(B+A\eta_r)^2+A^2\eta_z^2}{2r}.
+\label{eq:ms-pullback-density}
+\end{equation}
+Its Euler--Lagrange derivative and fibre Hessian are
+\begin{align}
+\frac{\delta L_\eta}{\delta\eta}
+&=-\frac{A}{r}\mathcal L\mathcal F,
+\label{eq:ms-pullback-EL}\\
+\frac{\partial^2L_\eta}{\partial\eta_i\partial\eta_j}
+&=\frac{A^2}{r}\delta_{ij}.
+\label{eq:ms-pullback-Hessian}
+\end{align}
+Since $\mathcal L\Phi_{\ellzero}(r,rv)=r\EE[v]$, the pulled-back
+Euler--Lagrange equation is exactly $A\EE[v]=0$. It is equivalent to the VFE
+on every sheet on which $A\neq0$, but not on the fold $A=0$.
+
+More precisely, for $\eta=rv$ with $0<v<1$,
+\begin{equation}
+A=0
+\quad\Longleftrightarrow\quad
+r\ellzero=-\frac{2v}{1-v^2}.
+\label{eq:ms-fold-density-root}
+\end{equation}
+If $\ellzero\neq0$, then at such a point
+\begin{equation}
+\partial_{\eta\eta}\Phi_{\ellzero}
+=-\ellzero\left(1+\frac{1}{v^2}\right)\neq0.
+\label{eq:ms-fold-second-derivative}
+\end{equation}
+Hence the map $(r,\eta)\mapsto(r,\mathcal F)$ has a nondegenerate fold.
+The Legendre rank of Eq.~\eqref{eq:ms-pullback-density} is two for $A\neq0$
+and zero for $A=0$.
+\end{theorem}
+
+\begin{proof}
+The first identity is the Euler--Lagrange chain rule for a base-preserving
+point transformation: $\delta\mathcal F=A\,\delta\eta$. Direct
+differentiation of Eq.~\eqref{eq:ms-pullback-density} gives
+Eq.~\eqref{eq:ms-pullback-Hessian}. Equation~\eqref{eq:ms-fold-density-root}
+follows by substituting $\eta=rv$ into $A=0$, and
+Eq.~\eqref{eq:ms-fold-second-derivative} follows by differentiating $A$ at
+fixed $r$.
+\end{proof}
+
+\begin{remark}[What the singular action does not prove]
+\label{rem:ms-fold-caution}
+The factor $A$ in Eq.~\eqref{eq:ms-pullback-EL} creates a spurious
+variational stratum: a smooth section whose image lies in $A=0$ is stationary
+for the pulled-back action even when $\mathcal L\mathcal F\neq0$. Therefore,
+one must impose the inverse-sheet condition or return to the original VFE at
+the fold. The rank loss is not a gauge symmetry and does not, by itself,
+exclude a specially compatible smooth crossing. Since the rank is not
+constant across the fold, a conventional unstratified Dirac--Bergmann
+analysis is inapplicable there.
+\end{remark}
+
+\subsection{De Donder--Weyl Hamiltonian and Poincar\'e--Cartan form}
+
+Let $Y=D\times\mathbb R_{\mathcal F}\to D$ be the auxiliary configuration
+bundle. Its first jet has coordinates
+$(r,z,\mathcal F,\mathcal F_r,\mathcal F_z)$, while the restricted
+multiphase bundle has coordinates $(r,z,\mathcal F,p^r,p^z)$. With
+$d^1x_r=dz$ and $d^1x_z=-dr$, define
+\begin{equation}
+p^r:=\frac{\mathcal F_r}{r},
+\qquad
+p^z:=\frac{\mathcal F_z}{r},
+\qquad
+H_{\mathcal F}:=\frac r2\bigl[(p^r)^2+(p^z)^2\bigr].
+\label{eq:ms-F-polymomenta-Hamiltonian}
+\end{equation}
+Our sign convention for the Hamiltonian Poincar\'e--Cartan and
+multisymplectic forms is
+\begin{align}
+\Theta_{\mathcal F}
+&:=p^r\,d\mathcal F\wedge dz
+-p^z\,d\mathcal F\wedge dr
+-H_{\mathcal F}\,dr\wedge dz,
+\label{eq:ms-F-Cartan-form}\\
+\Omega_{\mathcal F}&:=-d\Theta_{\mathcal F}.
+\label{eq:ms-F-multisymplectic-form}
+\end{align}
+
+\begin{theorem}[Exact covariant canonical transformation]
+\label{thm:ms-covariant-canonical-map}
+The De Donder--Weyl equations determined by
+Eqs.~\eqref{eq:ms-F-polymomenta-Hamiltonian}--\eqref{eq:ms-F-multisymplectic-form}
+are
+\begin{equation}
+\mathcal F_r=rp^r,
+\qquad
+\mathcal F_z=rp^z,
+\qquad
+\partial_rp^r+\partial_zp^z=0,
+\label{eq:ms-F-DDW-equations}
+\end{equation}
+and are equivalent to $\mathcal L\mathcal F=0$.
+
+On $A\neq0$, the $\eta$ polymomenta and Hamiltonian are
+\begin{align}
+\pi^r&=\frac{A}{r}(B+A\eta_r)=Ap^r,
+&
+\pi^z&=\frac{A^2}{r}\eta_z=Ap^z,
+\label{eq:ms-eta-polymomenta}\\
+H_\eta
+&=\frac{r}{2A^2}\bigl[(\pi^r)^2+(\pi^z)^2\bigr]
+-\frac BA\pi^r.
+\label{eq:ms-eta-Hamiltonian}
+\end{align}
+The map
+\begin{equation}
+\Psi:(r,z,\eta,\pi^r,\pi^z)
+\longmapsto
+\left(r,z,\Phi_{\ellzero}(r,\eta),\frac{\pi^r}{A},
+\frac{\pi^z}{A}\right)
+\label{eq:ms-canonical-map}
+\end{equation}
+satisfies
+\begin{equation}
+\Psi^*\Theta_{\mathcal F}=\Theta_\eta,
+\qquad
+\Psi^*\Omega_{\mathcal F}=\Omega_\eta,
+\label{eq:ms-canonical-pullback}
+\end{equation}
+where
+\begin{equation}
+\Theta_\eta
+:=\pi^r\,d\eta\wedge dz
+-\pi^z\,d\eta\wedge dr
+-H_\eta\,dr\wedge dz.
+\label{eq:ms-eta-Cartan-form}
+\end{equation}
+Thus the point linearization is an exact local multisymplectic
+transformation on every invertible sheet.
+\end{theorem}
+
+\begin{proof}
+The first two equations in Eq.~\eqref{eq:ms-F-DDW-equations} are the
+polymomentum definitions, and the third is the weighted field equation.
+Solving Eq.~\eqref{eq:ms-eta-polymomenta} for the first derivatives gives
+\begin{equation}
+\eta_r=\frac{r\pi^r}{A^2}-\frac BA,
+\qquad
+\eta_z=\frac{r\pi^z}{A^2},
+\end{equation}
+from which Eq.~\eqref{eq:ms-eta-Hamiltonian} follows by Legendre transform.
+Finally, $d\mathcal F=A\,d\eta+B\,dr$. Substitution into
+Eq.~\eqref{eq:ms-F-Cartan-form} gives Eq.~\eqref{eq:ms-eta-Cartan-form}
+coefficient by coefficient. Exterior differentiation proves the second
+identity in Eq.~\eqref{eq:ms-canonical-pullback}.
+\end{proof}
+
+At $A=0$, the map in Eq.~\eqref{eq:ms-canonical-map} ceases to exist, the
+velocity Hessian vanishes, and the fibre directions of the pulled-back
+Cartan form acquire a kernel. The appropriate object is therefore a
+stratified premultisymplectic system, not a single smooth hyperregular
+Hamiltonian theory crossing the density fold.
+
+\subsection{Multisymplectic conservation and Noether currents}
+
+Let $f$ and $g$ be two solutions of the linearized equation, which here is
+again $\mathcal Lh=0$. Define the one-form
+\begin{equation}
+\boldsymbol\omega(f,g)
+:=\frac{f g_r-g f_r}{r}\,dz
+-\frac{f g_z-g f_z}{r}\,dr.
+\label{eq:ms-current-form}
+\end{equation}
+Direct differentiation gives the off-shell identity
+\begin{equation}
+d\boldsymbol\omega(f,g)
+=\frac{f\mathcal Lg-g\mathcal Lf}{r}\,dr\wedge dz.
+\label{eq:ms-form-formula-offshell}
+\end{equation}
+Consequently,
+\begin{equation}
+d\boldsymbol\omega(f,g)=0
+\label{eq:ms-form-formula}
+\end{equation}
+for every pair of Jacobi fields. Equation~\eqref{eq:ms-form-formula} is the
+multisymplectic form formula for the present theory. It is also the local
+Green identity and hence makes precise why the same conserved quantity
+controls solution transformations, boundary data, and numerical residuals.
+
+Several exact Noether currents follow.
+
+\begin{proposition}[Noether and stress currents]
+\label{prop:ms-Noether-currents}
+Let $\mathcal L\mathcal F=0$ on $D$.
+
+First, for any fixed $h$ satisfying $\mathcal Lh=0$, the vertical
+transformation $\delta_h\mathcal F=h$ is a divergence variational symmetry.
+Its Noether current is
+\begin{equation}
+\boldsymbol J_h
+:=\frac{h\mathcal F_r-\mathcal Fh_r}{r}\,dz
+-\frac{h\mathcal F_z-\mathcal Fh_z}{r}\,dr,
+\qquad
+d\boldsymbol J_h=0.
+\label{eq:ms-Green-Noether-current}
+\end{equation}
+
+Second, translation in $z$ gives the divergence-free vector current
+\begin{equation}
+J_z^r=\frac{\mathcal F_r\mathcal F_z}{r},
+\qquad
+J_z^z=\frac{\mathcal F_z^2-\mathcal F_r^2}{2r},
+\qquad
+\partial_rJ_z^r+\partial_zJ_z^z=0.
+\label{eq:ms-z-Noether-current}
+\end{equation}
+
+Third, define the weighted stress tensor
+\begin{equation}
+T_{ij}
+:=\frac{\mathcal F_i\mathcal F_j}{r}
+-\delta_{ij}\frac{|\nabla\mathcal F|^2}{2r}.
+\label{eq:ms-stress-tensor}
+\end{equation}
+Then
+\begin{equation}
+\partial_iT_{iz}=0,
+\qquad
+\partial_iT_{ir}=\frac{|\nabla\mathcal F|^2}{2r^2}.
+\label{eq:ms-stress-divergence}
+\end{equation}
+The bundle dilation $(r,z,\mathcal F)\mapsto
+(e^s r,e^s z,e^{s/2}\mathcal F)$ gives, up to an overall sign, the improved
+current
+\begin{equation}
+D_i:=x^jT_{ij}-\frac{\mathcal F\mathcal F_i}{2r},
+\qquad
+\partial_iD_i=0,
+\qquad
+(x^r,x^z)=(r,z).
+\label{eq:ms-dilation-current}
+\end{equation}
+In particular, the unimproved stress identity gives the exact Pohozaev
+formula
+\begin{equation}
+\frac12\int_D\frac{|\nabla\mathcal F|^2}{r}\,dr\,dz
+=\int_{\partial D}x^jT_{ij}n_i\,ds.
+\label{eq:ms-Pohozaev-identity}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For the first statement,
+\begin{equation}
+\left.\frac{d}{d\epsilon}L_{\mathcal F+\epsilon h}
+\right|_{\epsilon=0}
+=\partial_i\!\left(\frac{\mathcal Fh_i}{r}\right)
+\end{equation}
+because $\mathcal Lh=0$. Equation~\eqref{eq:ms-Green-Noether-current} is
+the resulting Noether current. The remaining identities follow by direct
+differentiation and Eq.~\eqref{eq:ms-weighted-operator}. Integrating
+$\partial_i(x^jT_{ij})=|\nabla\mathcal F|^2/(2r)$ proves
+Eq.~\eqref{eq:ms-Pohozaev-identity}.
+\end{proof}
+
+Pure amplitude scaling $\mathcal F\mapsto a\mathcal F$ preserves the linear
+field equation but multiplies the action by $a^2$; it is therefore a solution
+symmetry, not a Noether symmetry. Translation in $r$ is broken by the
+explicit weight $r^{-1}$. None of the currents above is a sign-definite
+physical mass current.
+
+\subsection{A formal Hamiltonian slice and its instability}
+
+The covariant theory permits a canonical split, but no meridional coordinate
+is physical time. To make this distinction explicit, let
+$I=(r_-,r_+)\Subset(0,\infty)$ and use $z$ as a formal evolution variable.
+Set
+\begin{equation}
+\pi(r):=\frac{\mathcal F_z(r,z)}{r},
+\qquad
+\Omega_I:=\int_I\delta\mathcal F\wedge\delta\pi\,dr,
+\label{eq:ms-slice-symplectic-form}
+\end{equation}
+and
+\begin{equation}
+H_z[\mathcal F,\pi]
+:=\int_I\left(\frac r2\pi^2-\frac{\mathcal F_r^2}{2r}\right)dr.
+\label{eq:ms-z-Hamiltonian}
+\end{equation}
+For variations obeying boundary conditions that remove the endpoint term,
+the Hamilton equations are
+\begin{equation}
+\mathcal F_z=\frac{\delta H_z}{\delta\pi}=r\pi,
+\qquad
+\pi_z=-\frac{\delta H_z}{\delta\mathcal F}
+=-\partial_r\!\left(\frac{\mathcal F_r}{r}\right),
+\label{eq:ms-z-Hamilton-equations}
+\end{equation}
+and hence reproduce $\mathcal L\mathcal F=0$. The corresponding formal
+Poisson bracket is
+\begin{equation}
+\{P,Q\}_I
+:=\int_I\left(
+\frac{\delta P}{\delta\mathcal F}\frac{\delta Q}{\delta\pi}
+-\frac{\delta P}{\delta\pi}\frac{\delta Q}{\delta\mathcal F}
+\right)dr.
+\label{eq:ms-slice-Poisson-bracket}
+\end{equation}
+
+For two solution translations $f$ and $g$, the bilinear form
+\begin{equation}
+c_I(f,g)
+:=\int_I\frac{f g_z-g f_z}{r}\,dr
+\label{eq:ms-solution-cocycle}
+\end{equation}
+is independent of $z$ when the radial endpoint flux vanishes. It is an
+antisymmetric two-cocycle on the abelian solution-translation algebra. It
+may be degenerate for a chosen boundary condition and is not a quantum
+central extension.
+
+The Hamiltonian in Eq.~\eqref{eq:ms-z-Hamiltonian} is indefinite. The exact
+high-frequency Bessel solutions used in the Hadamard-instability theorem
+therefore have a complementary interpretation: the formal $z$-Hamiltonian
+flow amplifies arbitrarily small smooth Cauchy data exponentially. This is
+an elliptic Cauchy evolution, not a unitary or causal dynamics. In
+particular, no causal Peierls bracket follows from
+Eq.~\eqref{eq:ms-slice-Poisson-bracket}.
+
+\subsection{Boundary Lagrangians, gluing, and the physical interface}
+
+For a fixed smooth boundary component $\Sigma$, define the conormal momentum
+\begin{equation}
+p_n:=\frac{\partial_n\mathcal F}{r}.
+\label{eq:ms-conormal-momentum}
+\end{equation}
+The trace space
+\begin{equation}
+\mathcal H_\Sigma
+:=H^{1/2}(\Sigma)\oplus H^{-1/2}(\Sigma)
+\label{eq:ms-boundary-space}
+\end{equation}
+has the canonical symplectic form
+\begin{equation}
+\omega_\Sigma\bigl((f,p),(g,q)\bigr)
+:=\int_\Sigma(fq-gp)\,ds.
+\label{eq:ms-boundary-symplectic-form}
+\end{equation}
+Integration of Eq.~\eqref{eq:ms-form-formula} proves that the Cauchy data of
+$\mathcal L$-harmonic fields are isotropic. Under the standard elliptic trace
+and unique-continuation hypotheses, the Calder\'on projector identifies
+their completed Cauchy-data space as a Lagrangian subspace of
+$\mathcal H_{\partial D}$
+\cite{BoossBavnbekLeschZhu2009JGP,CoxEtAl2016TAMS}. This functional-analytic
+conclusion is stronger than the formal Green identity and uses the stated
+trace and closed-range hypotheses.
+
+On a fixed boundary and an invertible sheet,
+\begin{equation}
+\delta\mathcal F=A\,\delta\eta,
+\qquad
+\pi_n:=A p_n,
+\qquad
+\delta\mathcal F\wedge\delta p_n
+=\delta\eta\wedge\delta\pi_n.
+\label{eq:ms-boundary-canonical-map}
+\end{equation}
+Thus the auxiliary trace transformation is symplectic for $A\neq0$ and
+collapses at $A=0$.
+
+Suppose $D=D_-\cup_\Sigma D_+$ and orient both copies of $\Sigma$ by their
+outward normals. The two variational boundary terms cancel precisely when
+$\mathcal F$ and its conormal momentum match. Hence the solution spaces of
+the two pieces define Lagrangian correspondences, and source-free gluing is
+their composition along the diagonal. If $\mathcal F$ is continuous but
+$p_n$ jumps, the uncancelled term is exactly the auxiliary delta-layer
+source. This statement concerns the linear auxiliary equation: its jump is
+not an Israel surface stress.
+
+\begin{proposition}[Exact distributional interface dictionary]
+\label{prop:ms-distributional-interface}
+Let $\Sigma\Subset\{r>0\}$ be a smooth oriented curve with unit normal $n$
+pointing from $D_-$ to $D_+$, and let $\mathcal F$ be piecewise $C^2$ with
+one-sided traces. In the sense of Schwartz distributions,
+\begin{align}
+\mathcal L\mathcal F
+={}&(\mathcal L\mathcal F)_{\rm reg}
++[\partial_n\mathcal F]\delta_\Sigma
++\operatorname{div}\!\left([\mathcal F]n\delta_\Sigma\right)
+-\frac{n_r}{r}[\mathcal F]\delta_\Sigma.
+\label{eq:ms-discontinuous-interface}
+\end{align}
+If $[\mathcal F]=0$, only the single-layer term remains. Within one
+constant-$\ellzero$ chart, continuity of $\eta$ and $A\neq0$ give
+\begin{equation}
+[\partial_n\mathcal F]=A[\partial_n\eta].
+\label{eq:ms-continuous-interface-eta}
+\end{equation}
+The exact reflected mode
+\begin{equation}
+\mathcal F(r,z)=rJ_1(kr)e^{-k|z|}
+\label{eq:ms-reflected-layer-mode}
+\end{equation}
+satisfies
+\begin{equation}
+\mathcal L\mathcal F=-2krJ_1(kr)\delta(z).
+\label{eq:ms-reflected-layer-source}
+\end{equation}
+It is a razor-thin auxiliary layer, not a smooth volume-dust solution.
+\end{proposition}
+
+\begin{proof}
+Write the piecewise field with a Heaviside function of signed distance to
+$\Sigma$ and differentiate distributionally. The regular gradients produce
+$[\partial_n\mathcal F]\delta_\Sigma$, the jump of the field produces the
+divergence term, and $-r^{-1}\partial_r$ produces the last term in
+Eq.~\eqref{eq:ms-discontinuous-interface}. If the field is continuous, the
+last two terms vanish. On one inverse chart,
+$\partial_n\mathcal F=B n_r+A\partial_n\eta$; continuity of $r$, $\eta$,
+$A$, and $B$ proves Eq.~\eqref{eq:ms-continuous-interface-eta}. Finally,
+$\partial_z^2e^{-k|z|}=k^2e^{-k|z|}-2k\delta(z)$, while the Bessel equation
+gives
+$$
+\left(\partial_r^2-r^{-1}\partial_r+k^2\right)
+\bigl[rJ_1(kr)\bigr]=0,
+$$
+which proves Eq.~\eqref{eq:ms-reflected-layer-source}.
+\end{proof}
+
+The wavefront of $\delta_\Sigma$ is the nonzero conormal bundle of
+$\Sigma$. Ellipticity therefore localizes the singular support of the
+auxiliary response to that of its source, rather than producing propagation
+along real characteristics \cite{Hormander2003ALPDOI}. If $\eta$ or the
+metric itself jumps, expressions such as $|\nabla\eta|^2$, $\log\eta$,
+$g^{-1}$, and the nonlinear Einstein tensor contain products that ordinary
+distribution theory need not define. They must not be formed without a
+separately specified generalized-function framework or regularization.
+Moreover, the coefficient in Eq.~\eqref{eq:ms-discontinuous-interface} is
+not an Israel stress tensor: that tensor is determined only after the full
+metric has been reconstructed and its extrinsic-curvature jump evaluated.
+The Geroch--Traschen regular-metric class accommodates hypersurface shells
+but not generic codimension-two strings \cite{GerochTraschen1987PRD}.
+
+For a fixed piecewise smooth boundary, the first-order scalar action creates
+no additional codimension-two charge. Shape variations, moving interfaces,
+or independent boundary actions enlarge the phase space and can generate
+corner terms. A Maslov index or spectral-flow statement requires a specified
+self-adjoint Fredholm family; it is not a consequence of the word
+``Lagrangian'' alone.
+
+The vacuum exterior has a different variational system. Where a global twist
+potential $\chi$ exists, the gauge-fixed Ernst subsystem may be written, up
+to an overall conventional constant, as
+\begin{equation}
+\mathcal A_{\mathrm E}[f,\chi]
+=\frac12\int_D\frac r{f^2}
+\left(|\nabla f|^2+|\nabla\chi|^2\right)dr\,dz,
+\qquad f>0.
+\label{eq:ms-Ernst-action}
+\end{equation}
+It has polymomenta
+\begin{equation}
+p_f^i=\frac r{f^2}\partial_i f,
+\qquad
+p_\chi^i=\frac r{f^2}\partial_i\chi,
+\label{eq:ms-Ernst-polymomenta}
+\end{equation}
+and an analogous conserved multisymplectic current for pairs of Jacobi
+fields. This structure belongs to the nonlinear Ernst harmonic map, not to
+$\mathcal F$. On a multiply connected exterior, Eq.~\eqref{eq:ms-Ernst-action}
+is global only after the twist periods vanish; otherwise one must use local
+potentials or the universal cover together with the cohomology sector.
+
+Finally, the physical variational problem starts from the
+Einstein--Hilbert action with its gravitational boundary terms and a dust
+action capable of vorticity. For example, a material-coordinate
+representation uses
+\begin{equation}
+\mathcal A_{\mathrm{dust}}
+=-\frac12\int_{\mathcal M}\sqrt{-g}\,M
+\bigl(g^{ab}U_aU_b+1\bigr)d^4x,
+\qquad
+U_a=-\partial_aT+W_A\partial_aZ^A.
+\label{eq:ms-vortical-dust-action}
+\end{equation}
+Such matter actions and the required gravitational boundary term are
+reviewed in Refs.~\cite{Brown1993CQG,GibbonsHawking1977PRD}.
+The full covariant presymplectic form has diffeomorphism degeneracies and
+must be reduced only after the constraints, asymptotic conditions, and
+boundary gauge have been fixed \cite{LeeWald1990JMP,IyerWald1994PRD}.
+Variation at an internal timelike boundary
+relates continuity of the induced metric and gravitational canonical
+momentum to the Darmois conditions; the matter variables additionally
+require a no-flux or prescribed-flux condition. No equality between that
+physical form and $\Omega_{\mathcal F}$ has been established here.
+
+This separation prevents three incorrect conclusions. The convex auxiliary
+energy is not the ADM mass, the formal $z$-Hamiltonian is not physical time
+evolution, and the auxiliary Lagrangian matching relation is only one
+compatibility layer within the complete dust--vacuum boundary problem.
