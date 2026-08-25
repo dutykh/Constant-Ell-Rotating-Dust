@@ -1,13 +1,33 @@
+<!--
+Constant-ell rotating-dust galaxy models, Part I: Maple certificates.
+
+Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
+         Science and Technology, Abu Dhabi, UAE)
+         Dr. Denys Dutykh (Mathematics Department, Khalifa University of
+         Science and Technology, Abu Dhabi, UAE)
+-->
+
 # Maple differential-algebra certificates
 
 These scripts provide a proportionate, machine-checkable audit of the local differential-algebra statements used in Part I. They were tested with Maple 2022.0 on 2026-08-25.
 
-Run them from `revised/codes`:
+From the repository root, the complete Maple layer is run with
 
 ```sh
+make maple MAPLE=/opt/maple2022/bin/maple
+```
+
+which executes all four certificates in order:
+
+```sh
+maple -q constant_ell_checks.mpl
+maple -q verify_variational.mpl
 maple -q rifsimp_branches.mpl
 maple -q thomas_certificates.mpl
 ```
+
+The two branch certificates documented here can also be run on their own from
+`codes/`.
 
 Each script exits with a Maple error if any deterministic assertion fails. A successful run ends with an `All ... passed.` line. Maple's command-line kernel starts a local `mserver`; a restricted container may therefore need permission to create a local socket even though these scripts use no network resource.
 

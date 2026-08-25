@@ -1,3 +1,12 @@
+<!--
+Constant-ell rotating-dust galaxy models, Part I: mechanism figures.
+
+Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
+         Science and Technology, Abu Dhabi, UAE)
+         Dr. Denys Dutykh (Mathematics Department, Khalifa University of
+         Science and Technology, Abu Dhabi, UAE)
+-->
+
 # Mechanism figures
 
 `generate_figures.py` creates the three vector figures used to clarify the
@@ -8,14 +17,23 @@ installation.
 
 ## Regeneration
 
-From the `revised` directory, run
+From the repository root, run
 
 ```sh
-MPLCONFIGDIR=/tmp/constant-ell-matplotlib python3 codes/generate_figures.py
+make figures
+```
+
+which is equivalent to
+
+```sh
+MPLCONFIGDIR=/tmp/constant-ell-matplotlib SOURCE_DATE_EPOCH=1787616000 \
+    python3 codes/generate_figures.py
 ```
 
 The explicit cache directory is optional on systems with a writable default
-Matplotlib configuration directory. The only Python dependencies are NumPy
+Matplotlib configuration directory. Pinning `SOURCE_DATE_EPOCH` suppresses the
+wall-clock creation date that Matplotlib would otherwise stamp into each PDF,
+so a rerun reproduces the committed files byte for byte. The only Python dependencies are NumPy
 and Matplotlib. The figures were generated and inspected with Python 3.14.4,
 NumPy 2.3.5, and Matplotlib 3.10.7. No random numbers or external data enter
 the calculation.
@@ -72,70 +90,19 @@ for the meridional quadrature period. Even when $P_\zeta=P_\chi=0$, existence
 of single-valued potentials does not prove that $(\varpi,\zeta)$ is a global
 Weyl chart; noncriticality, injectivity, and properness remain separate.
 
-## Recommended manuscript insertions and captions
+## Placement in the manuscript
 
-### Density-admissibility phase diagram
+Each figure is set as a REVTeX `figure*` at `\textwidth`.
 
-Insert immediately after the remark following
-Theorem~`\ref{thm:density-whitney-fold}` and before the automatic-analyticity
-subsection.
+| Figure | Label | Location |
+|---|---|---|
+| `density_admissibility_phase.pdf` | `fig:density-admissibility-phase` | `sections/analytic_global_structure.tex`, after the remark following the density-fold theorem |
+| `viability_gate_flow.pdf` | `fig:viability-gate-flow` | `DB-DD-ConstantEll-RotatingDust-PartI.tex`, after the proof of the main viability theorem |
+| `toroidal_period_obstructions.pdf` | `fig:toroidal-period-obstructions` | `sections/topology_exterior.tex`, after the proof of the toroidal-body period theorem |
 
-```tex
-\begin{figure*}[t]
-  \includegraphics[width=\textwidth]{figures/density_admissibility_phase.pdf}
-  \caption{Exact density-admissibility diagram in the variables
-  $0<v\leqslant0.8$ and $x=r\ell$. At a regular noncritical point, the
-  hatched strip $x_-(v)\leqslant x\leqslant x_+(v)$ is equivalent to
-  $\rho\geqslant0$. The lower boundary is simultaneously $A=0$, the
-  Whitney fold of the point-linearising map, whereas the upper boundary is
-  an ordinary zero of the algebraic density factor. The dash-dotted and
-  dotted curves illustrate only the kinematics of $x=r\ell$ for fixed-sign
-  $\ell$ as $r$ increases; they are not solutions of the VFE. Thus the
-  diagram selects a local inverse sheet but does not establish a global
-  spacetime.}
-  \label{fig:density-admissibility-phase}
-\end{figure*}
-```
-
-### Local-to-global viability gates
-
-Insert after the proof of Theorem~`\ref{thm:main-viability}` and before the
-next section.
-
-```tex
-\begin{figure*}[t]
-  \includegraphics[width=\textwidth]{figures/viability_gate_flow.pdf}
-  \caption{Logical architecture of the constant-$\ell$ viability problem.
-  Solid arrows are necessary gates along the chosen domain branch, while
-  dashed links are conditional. A regular axis blocks nonzero constant
-  $\ell$; an axis-avoiding core still requires either a controlled
-  asymptotic continuation or complete finite-boundary and exterior data
-  before observable predictions can be assigned. Passing any gate is not a
-  sufficiency theorem. The purple sidecar records auxiliary variational and
-  multisymplectic structure of the VFE and is explicitly distinct from the
-  physical Einstein--Hilbert--Brown-dust action.}
-  \label{fig:viability-gate-flow}
-\end{figure*}
-```
-
-### Toroidal topology and period obstructions
-
-Insert immediately after the proof of
-Theorem~`\ref{thm:toroidal-body-periods}` and before the paragraph beginning
-“The theorem repairs an important logical point”.
-
-```tex
-\begin{figure*}[t]
-  \includegraphics[width=\textwidth]{figures/toroidal_period_obstructions.pdf}
-  \caption{Topology and periods for one compact axis-avoiding body. Its
-  meridional disk $B$ revolves to
-  $\Omega_{\mathrm{mat}}\simeq D^2\times S^1$, while the exterior orbit
-  surface $Q^+$ has one homology generator $\gamma$. Under the local
-  closedness equations, $P_\zeta=0$, $P_\chi=0$, and $P_\mu=0$ are exactly
-  the single-valuedness tests for $\zeta$, $\chi$, and $\mu$, respectively.
-  The first two period tests still do not make $(\varpi,\zeta)$ a global Weyl
-  chart: noncriticality, injectivity, and properness must be checked
-  separately.}
-  \label{fig:toroidal-period-obstructions}
-\end{figure*}
-```
+The captions carry the interpretive caveats stated above: the representative
+radial paths in the density diagram are not solutions of the VFE; the dashed
+links in the gate flow are conditional, and its auxiliary variational sidecar is
+explicitly distinct from the physical Einstein--Hilbert--Brown-dust action; and
+the vanishing of the first two periods still does not make $(\varpi,\zeta)$ a
+global Weyl chart.
