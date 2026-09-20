@@ -1,8 +1,8 @@
 # Constant-ell rotating-dust galaxy models, Part I:
 # local realizability, sharp constraints, and global-completion obstructions.
 #
-# Build and verification driver for the manuscript and its research-code
-# package.
+# Build and verification driver for the manuscript, its supplementary
+# material, and the accompanying research-code package.
 #
 # Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
 #          Science and Technology, Abu Dhabi, UAE)
@@ -10,23 +10,30 @@
 #          Science and Technology, Abu Dhabi, UAE)
 #
 # Quick start:
-#   make          compile the manuscript PDF and remove the auxiliary files
+#   make          compile both PDFs and remove the auxiliary files
 #   make verify   run the SymPy and Maple certificates
 #   make help     list every available target
 
 SHELL := /bin/bash
 
 # ---------------------------------------------------------------------------
-# Manuscript sources and generated artifacts
+# Manuscript, supplement, and generated artifacts
 # ---------------------------------------------------------------------------
 
-JOB := DB-DD-ConstantEll-RotatingDust-PartI
+JOB  := DB-DD-ConstantEll-RotatingDust-PartI
+SUPP := $(JOB)-Supplement
+
 TEX := $(JOB).tex
 BIB := $(JOB).bib
 PDF := $(JOB).pdf
 LOG := $(JOB).log
 
-SECTIONS := $(wildcard sections/*.tex)
+# The supplement carries its own embedded reference list and compiles
+# independently of the manuscript and of the bibliography database.
+SUPPTEX := $(SUPP).tex
+SUPPPDF := $(SUPP).pdf
+
+PDFS := $(PDF) $(SUPPPDF)
 
 FIGURES := figures/density_admissibility_phase.pdf \
 	   figures/toroidal_period_obstructions.pdf \
@@ -34,7 +41,7 @@ FIGURES := figures/density_admissibility_phase.pdf \
 FIGDATA := figures/density_phase_boundaries.csv
 
 # Auxiliary files that latexmk does not remove on its own.
-AUXEXTRA := $(JOB).bbl $(JOB)Notes.bib
+AUXEXTRA := $(JOB).bbl $(JOB)Notes.bib $(SUPP).bbl $(SUPP)Notes.bib
 
 # ---------------------------------------------------------------------------
 # External tools; override on the command line when they live elsewhere, e.g.
@@ -56,26 +63,33 @@ SOURCE_DATE_EPOCH ?= 1787616000
 
 FIGENV := MPLCONFIGDIR=$(MPLCONFIGDIR) SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH)
 
-.PHONY: all build rebuild figures python-checks maple verify check-style \
-	clean distclean help
+.PHONY: all build rebuild manuscript supplement figures python-checks maple \
+	verify check-style clean distclean help
 
 .DEFAULT_GOAL := all
 .DELETE_ON_ERROR:
 
 # ---------------------------------------------------------------------------
-# Manuscript
+# Manuscript and supplement
 # ---------------------------------------------------------------------------
 
-all: $(PDF)
-
-build: $(PDF)
-
-# A successful compilation leaves the PDF alone in the working directory: the
-# auxiliary files are removed as soon as latexmk reports success. They survive
-# a failed run, where they are needed for diagnosis.
-$(PDF): $(TEX) $(BIB) $(SECTIONS) $(FIGURES)
-	$(LATEXMK) $(LATEXMKFLAGS) $(TEX)
+# A successful compilation leaves the two PDFs alone in the working directory:
+# the auxiliary files are removed as soon as latexmk reports success. They
+# survive a failed run, where they are needed for diagnosis.
+all: $(PDFS)
 	@$(MAKE) --no-print-directory clean
+
+build: all
+
+manuscript: $(PDF)
+
+supplement: $(SUPPPDF)
+
+$(PDF): $(TEX) $(BIB)
+	$(LATEXMK) $(LATEXMKFLAGS) $(TEX)
+
+$(SUPPPDF): $(SUPPTEX)
+	$(LATEXMK) $(LATEXMKFLAGS) $(SUPPTEX)
 
 rebuild: distclean
 	$(MAKE) all
@@ -117,8 +131,9 @@ maple:
 	cd codes && $(MAPLE) -q rifsimp_branches.mpl
 	cd codes && $(MAPLE) -q thomas_certificates.mpl
 
-# House-style and build-log audit. The build log is not kept between builds, so
-# this target recompiles unconditionally, audits, and cleans up again.
+# House-style and build-log audit of the manuscript. The build log is not kept
+# between builds, so this target recompiles unconditionally, audits, and cleans
+# up again.
 check-style:
 	$(LATEXMK) -g $(LATEXMKFLAGS) $(TEX)
 	$(PYTHON) codes/check_manuscript.py --log $(LOG) $(TEX) $(BIB)
@@ -128,28 +143,32 @@ check-style:
 # Housekeeping
 # ---------------------------------------------------------------------------
 
-# Remove the auxiliary files and retain the compiled PDF.
+# Remove the auxiliary files and retain the compiled PDFs.
 clean:
 	@$(LATEXMK) -c $(TEX) >/dev/null
+	@$(LATEXMK) -c $(SUPPTEX) >/dev/null
 	@$(RM) $(AUXEXTRA)
 
-# Remove the auxiliary files and the compiled PDF.
+# Remove the auxiliary files and the compiled PDFs.
 distclean:
 	@$(LATEXMK) -C $(TEX) >/dev/null
+	@$(LATEXMK) -C $(SUPPTEX) >/dev/null
 	@$(RM) $(AUXEXTRA)
 
 help:
 	@echo 'Targets for $(JOB):'
 	@echo
-	@echo '  all, build     compile $(PDF), then remove the auxiliary files (default)'
+	@echo '  all, build     compile both PDFs, then remove the auxiliary files (default)'
+	@echo '  manuscript     compile $(PDF) alone'
+	@echo '  supplement     compile $(SUPPPDF) alone'
 	@echo '  rebuild        discard every build artifact and compile afresh'
 	@echo '  figures        regenerate the three vector figures and the CSV'
 	@echo '  python-checks  run the manuscript audit and the SymPy certificates'
 	@echo '  maple          run the four Maple differential-algebra certificates'
 	@echo '  verify         python-checks followed by maple'
 	@echo '  check-style    recompile, audit house style and the build log, clean up'
-	@echo '  clean          remove the auxiliary files, keep the PDF'
-	@echo '  distclean      remove the auxiliary files and the PDF'
+	@echo '  clean          remove the auxiliary files, keep the PDFs'
+	@echo '  distclean      remove the auxiliary files and the PDFs'
 	@echo '  help           show this list'
 	@echo
 	@echo 'Tool overrides: PYTHON, LATEXMK, MAPLE, LATEXMKFLAGS, MPLCONFIGDIR,'

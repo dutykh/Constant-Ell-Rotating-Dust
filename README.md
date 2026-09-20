@@ -27,9 +27,12 @@ numerical Part II.
 
 ## Status
 
-**Part I is complete** (62 pages) and is the whole of the present repository:
-manuscript source, five section files, three vector figures with their source
-data, and eight independent symbolic certificates in Maple and SymPy.
+**Part I is complete** and is the whole of the present repository: the
+manuscript (27 pages), its supplementary material (14 pages), three vector
+figures with their source data, and eight independent symbolic certificates in
+Maple and SymPy. The principal theorems and their proofs are in the manuscript;
+the supplement carries the supporting constructions, the further estimates, the
+explicit junction formulas, and the detailed spectroscopic formulation.
 
 **Part II, the numerical companion, is in preparation.** It will address the
 program set out in the outlook of Part I: closing the remaining sharp control
@@ -59,10 +62,6 @@ added to this repository.
   reconstruction potentials is equivalent to the vanishing of explicit
   meridional quadrature periods.
 - The global regular-axis ℓ = 0 branch is Liouville rigid.
-- The auxiliary equation possesses a weighted variational principle, a
-  De Donder–Weyl multisymplectic formulation, Noether currents, and a Lagrangian
-  boundary-data space. These structures degenerate precisely at the density fold
-  and must **not** be identified with the physical Einstein–dust phase space.
 - A zero-density surface is only a candidate boundary. Shell-free completion
   requires the complete Darmois data together with compatibility with a
   gauge-fixed exterior Ernst problem.
@@ -72,22 +71,22 @@ added to this repository.
 ## Repository layout
 
 ```
-DB-DD-ConstantEll-RotatingDust-PartI.tex   manuscript (REVTeX 4.2, PRA style)
-DB-DD-ConstantEll-RotatingDust-PartI.bib   bibliography, 77 records
-DB-DD-ConstantEll-RotatingDust-PartI.pdf   compiled manuscript, 62 pages
-Makefile                                   build and verification driver
-sections/                                  five \input section files
-  analytic_global_structure.tex              fold geometry, analyticity, rigidity
-  approx_flat_sharpness.tex                  state-constrained sharpness audit
-  physical_variational_string.tex            covariant variation, EMDA, dualities
-  topology_exterior.tex                      helical plateaux, periods, Ernst
-  variational_multisymplectic.tex            weighted action, De Donder–Weyl
-figures/                                   three vector PDFs and their source data
-codes/                                     certificates, generators, audits
-LICENSE                                    GNU LGPL v2.1
+DB-DD-ConstantEll-RotatingDust-PartI.tex             manuscript source (REVTeX 4.2)
+DB-DD-ConstantEll-RotatingDust-PartI.bib             bibliography, 89 records
+DB-DD-ConstantEll-RotatingDust-PartI.pdf             compiled manuscript, 27 pages
+DB-DD-ConstantEll-RotatingDust-PartI-Supplement.tex  supplement source (article class)
+DB-DD-ConstantEll-RotatingDust-PartI-Supplement.pdf  compiled supplement, 14 pages
+Makefile                                             build and verification driver
+figures/                                             three vector PDFs and their source data
+codes/                                               certificates, generators, audits
+LICENSE                                              GNU LGPL v2.1
 ```
 
-## Building the manuscript
+Both documents are single-file sources. The manuscript draws its reference list
+from the bibliography database; the supplement carries its own embedded
+reference list and compiles independently of it.
+
+## Building the manuscript and the supplement
 
 Requirements: a TeX Live installation with REVTeX 4.2, `latexmk`, and GNU Make
 4.3 or newer (grouped targets are used).
@@ -96,21 +95,24 @@ Requirements: a TeX Live installation with REVTeX 4.2, `latexmk`, and GNU Make
 make
 ```
 
-This compiles `DB-DD-ConstantEll-RotatingDust-PartI.pdf` and then removes every
-auxiliary file, leaving the PDF alone in the working directory. Auxiliary files
-survive a *failed* run, where they are needed for diagnosis.
+This compiles both PDFs and then removes every auxiliary file, leaving the two
+PDFs alone in the working directory. Auxiliary files survive a *failed* run,
+where they are needed for diagnosis. Either document can also be built on its
+own with `make manuscript` or `make supplement`.
 
 | Target | Effect |
 |---|---|
-| `make`, `make build` | compile the PDF, then remove the auxiliary files |
+| `make`, `make build` | compile both PDFs, then remove the auxiliary files |
+| `make manuscript` | compile the manuscript PDF alone |
+| `make supplement` | compile the supplement PDF alone |
 | `make rebuild` | discard every build artifact and compile afresh |
 | `make figures` | regenerate the three vector figures and the boundary CSV |
 | `make python-checks` | manuscript audit and the four SymPy certificates |
 | `make maple` | the four Maple differential-algebra certificates |
 | `make verify` | `python-checks` followed by `maple` |
 | `make check-style` | recompile, audit house style and the build log, clean up |
-| `make clean` | remove the auxiliary files, keep the PDF |
-| `make distclean` | remove the auxiliary files and the PDF |
+| `make clean` | remove the auxiliary files, keep the PDFs |
+| `make distclean` | remove the auxiliary files and the PDFs |
 | `make help` | list the targets |
 
 Tool locations are overridable: `PYTHON`, `LATEXMK`, `MAPLE`, `LATEXMKFLAGS`,
@@ -144,9 +146,15 @@ suite has eight independent layers:
 | `codes/audit_core_symbolic.py` | independently rederived central-density, trace, asymptotic, and matching algebra |
 | `codes/audit_physical_string_sympy.py` | signs and coefficients of the physical action, frame dictionary, Buscher illustration, and axidilaton boundary estimate |
 
+The suite is retained in full. Two of its scripts, `codes/verify_variational.mpl`
+and `codes/audit_physical_string_sympy.py`, certify the auxiliary variational
+algebra and the physical action and frame dictionary; the analysis they support
+is not part of the present manuscript.
+
 `codes/check_manuscript.py` additionally audits citation keys, duplicate labels,
 PDF metadata, house-style inequalities and delimiters, and release-blocking
-build-log diagnostics.
+build-log diagnostics. It takes the manuscript source and the bibliography
+database as its two arguments.
 
 `codes/README_MAPLE_CERTIFICATES.md` documents the encoded differential system,
 the branch assumptions, and the scope of the Maple decompositions.
@@ -158,9 +166,11 @@ the branch assumptions, and the scope of the Maple decompositions.
 make figures
 ```
 
-All three PDFs are pure vector output, exactly 7.0 inches wide, and intended for
-a REVTeX `figure*` at `\textwidth`. NumPy and Matplotlib are the only
-dependencies; no random numbers or external data enter the calculation.
+All three PDFs are pure vector output, exactly 7.0 inches wide, and sized for a
+REVTeX `figure*` at `\textwidth`. They accompany the source package; the present
+manuscript and supplement do not reproduce them. NumPy and Matplotlib are the
+only dependencies, and no random numbers or external data enter the
+calculation.
 
 | Output | Size | Purpose |
 |---|---:|---|

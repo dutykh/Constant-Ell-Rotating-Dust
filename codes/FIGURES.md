@@ -92,13 +92,15 @@ Weyl chart; noncriticality, injectivity, and properness remain separate.
 
 ## Placement in the manuscript
 
-Each figure is set as a REVTeX `figure*` at `\textwidth`.
+Each figure is pure vector output sized for a REVTeX `figure*` at `\textwidth`.
+The three files accompany the source package; the shortened manuscript and its
+supplement do not reproduce them, so no placement is recorded here.
 
-| Figure | Label | Location |
+| Figure | Label | Subject |
 |---|---|---|
-| `density_admissibility_phase.pdf` | `fig:density-admissibility-phase` | `sections/analytic_global_structure.tex`, after the remark following the density-fold theorem |
-| `viability_gate_flow.pdf` | `fig:viability-gate-flow` | `DB-DD-ConstantEll-RotatingDust-PartI.tex`, after the proof of the main viability theorem |
-| `toroidal_period_obstructions.pdf` | `fig:toroidal-period-obstructions` | `sections/topology_exterior.tex`, after the proof of the toroidal-body period theorem |
+| `density_admissibility_phase.pdf` | `fig:density-admissibility-phase` | the exact density roots, the admissible strip, and the fold |
+| `viability_gate_flow.pdf` | `fig:viability-gate-flow` | the necessary logical gates from the local equations to the observables |
+| `toroidal_period_obstructions.pdf` | `fig:toroidal-period-obstructions` | the solid-torus body and its three period obstructions |
 
 The captions carry the interpretive caveats stated above: the representative
 radial paths in the density diagram are not solutions of the VFE; the dashed
