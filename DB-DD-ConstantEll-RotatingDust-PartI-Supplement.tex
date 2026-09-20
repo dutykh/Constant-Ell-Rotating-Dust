@@ -1,0 +1,714 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,microtype}
+\usepackage[labelsep=period]{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tocloft}
+\setcounter{tocdepth}{2}
+\setlength{\cftsecnumwidth}{2.7em}
+\setlength{\cftsubsecindent}{2.7em}
+\setlength{\cftsubsecnumwidth}{3.4em}
+\usepackage[colorlinks=true,allcolors=blue!45!black]{hyperref}
+\hypersetup{pdfauthor={Davide Batic and Denys Dutykh}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{2pt}
+\allowdisplaybreaks[1]
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{background}{Background}[section]
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\ellzero}{\ell_0}
+\newcommand{\RG}{R_{\mathrm G}}
+\newcommand{\vc}{v_{\mathrm c}}
+\newcommand{\Drz}{\Delta_{rz}}
+\newcommand{\gradRZ}{\nabla_{rz}}
+\newcommand{\ET}{\mathcal T_{\ellzero}}
+\newcommand{\EE}{\mathcal E_{\ellzero}}
+\newcommand{\OmZ}{\Omega_{\mathrm Z}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thetheorem}{S\arabic{theorem}}
+\renewcommand{\theproposition}{S\arabic{proposition}}
+\renewcommand{\thelemma}{S\arabic{lemma}}
+\renewcommand{\thecorollary}{S\arabic{corollary}}
+\renewcommand{\thedefinition}{S\arabic{definition}}
+\renewcommand{\theremark}{S\arabic{remark}}
+
+% This supplement compiles independently of the manuscript auxiliary file.
+
+\begin{document}
+\begin{center}
+{\Large Supplementary Material\par}\vspace{6pt}
+{\large Local realizability and global completion of constant-\texorpdfstring{$\ell$}{ell} rotating dust\par}\vspace{10pt}
+Davide Batic and Denys Dutykh\\[4pt]
+{\small Mathematics Department, Khalifa University of Science and Technology\\
+Abu Dhabi, United Arab Emirates}
+\end{center}
+
+\section*{Overview and relation to the manuscript}
+\phantomsection\label{supp-overview}
+\addcontentsline{toc}{section}{Overview and relation to the manuscript}
+
+This supplement provides the supporting results and calculations cited in the manuscript's analysis of local realizability and global completion. The principal theorems and their proofs are contained in the manuscript. We retain its notation and conventions, with the prefix S identifying sections, equations, and numbered results in this supplement. Sections~\ref{supp:auxiliary-analysis}--\ref{supp:span-analysis} develop the local continuation arguments. They give the precise Runge approximation statement and its reconstruction hypotheses, an alternative axis argument based on the dust congruence, the explicit zero-parameter flat trace, and the supplementary radial-span estimates. The last of these sections includes the positive-parameter refinement and the analytic constructions needed to examine sharpness. Section~\ref{supp:retained-asymptotics} compares the exact equations with the retained edge approximation and states the remainder hypothesis required for a large-radius test. Sections~\ref{supp:additional-junction}--\ref{supp:observables} turn to completion and measurement. The explicit junction formulas supply the surface stresses and cylindrical boundary data, while the nonlinear exterior discussion identifies the additional assumptions needed beyond the manuscript's linearized Ernst criterion. The spectroscopic formulation then specifies the observer and ray data required to predict a frequency shift. Section~\ref{app:symbolic-reproducibility} describes the exact algebraic checks accompanying the source package.
+
+\tableofcontents
+
+\section{Runge approximation and metric reconstruction}\label{supp:auxiliary-analysis}
+
+The auxiliary equation admits approximation from a larger domain under the usual topological condition on the complement. Reconstruction preserves physical inequalities wherever the inverse remains regular, and the metric quadrature has a specified local primitive. Under the following hypotheses, a local auxiliary solution can be approximated by solutions defined on a larger domain while preserving inverse-sheet regularity, subluminality, and positive density on a compact interior region.
+\begin{theorem}\label{thm:runge-realization}
+Let $K$ and $K'$ be compact sets with $K\subset\operatorname{int}K'\subset K'\Subset D_1\Subset\{r>0\}$. Suppose $\mathcal F_0$ is $\mathcal L$-harmonic on a neighbourhood of
+$K'$ and that $D_1\setminus K'$ has no relatively compact connected
+component. For every nonnegative integer $m$, there are $\mathcal L$-harmonic functions $\mathcal F_j$ on $D_1$ such that $\mathcal F_j\to\mathcal F_0$ in $C^m(K)$. For the reconstruction statement, assume that $K$ is contained in
+finitely many simply connected open sets $V_a$ with
+$\overline{V_a}\subset\operatorname{int}K'$. Suppose an inverse
+sheet of $\mathcal F_0$ is defined on a neighbourhood of each
+$\overline{V_a}$ and is regular there. Normalize the primitive of
+the meridional quadrature at a fixed point in each $V_a$. Assume on $K$ that
+\begin{equation}\label{eq:runge-core-margins}
+A\geqslant a_0>0,\qquad
+0<v\leqslant1-\delta,\qquad
+\rho\geqslant\rho_0>0.
+\end{equation}
+If $m\geqslant 2$, the approximating functions can be chosen so that,
+for all sufficiently large $j$, reconstruction on the same sheets gives
+\begin{equation}
+A_j\geqslant a_0/2,\qquad
+0<v_j\leqslant1-\delta/2,\qquad
+\rho_j\geqslant\rho_0/2
+\end{equation}
+on $K$.
+\end{theorem}
+\begin{proof}
+The operator $\mathcal L$ is elliptic with analytic coefficients on
+$D_1$, and its formal adjoint has unique continuation.
+The Lax--Malgrange theorem therefore supplies harmonic
+$\mathcal F_j$ on $D_1$ converging uniformly to $\mathcal F_0$ on
+$K'$~\cite{Malgrange1956AIF}. Interior elliptic estimates improve
+this convergence to every fixed $C^m$ norm on compact subsets of
+$\operatorname{int}K'$, including $K$ and the sets
+$\overline{V_a}$. The implicit-function theorem and compactness preserve the selected
+inverse on each $\overline{V_a}$ for sufficiently large $j$.
+The inverse and its derivatives depend continuously on
+$\mathcal F_j$ while $A$ stays away from zero. The reconstructed
+meridional one-forms are closed and converge with their required
+derivatives. Simple connectedness supplies primitives, and fixing
+their values at the chosen base points gives continuous dependence
+of these primitives on compact subsets. The metric coefficients
+and density therefore converge on $K$. Compactness preserves the
+positive lower bound of $v$, and the three strict margins imply
+the stated inequalities for large $j$.
+\end{proof}
+The simply connected neighbourhoods in the reconstruction statement
+make the normalization of the meridional primitive explicit. On a
+multiply connected reconstruction domain, the corresponding period
+conditions must instead be imposed. The approximation gives no
+physical control on $D_1\setminus K$, and an exact trace equality
+need not survive it. An asymptotic end and a matching surface require
+additional constructions. The period requirement follows directly from the interior quadrature. Writing $\alpha_\mu=M_r\,dr+M_z\,dz$ for the form defined by the reconstruction equations in the manuscript, one has
+\begin{equation}\label{eq:interior-quadrature-compatibility}
+d\alpha_\mu=\frac{\eta_z A}{4r}\,\mathcal L\mathcal F\,dz\wedge dr.
+\end{equation}
+Thus, an auxiliary solution makes $\alpha_\mu$ closed. A single-valued primitive on a multiply connected domain exists precisely when its integral around every homology generator vanishes. The local normalizations used above extend to that domain only when these period conditions hold.
+
+\section{Further axis arguments and an explicit flat trace}
+\label{sec:supplement-traces}
+
+The axis argument below uses regularity of the material four-velocity to complement the metric argument in the manuscript. The explicit flat trace that follows shows how transverse growth limits the zero-parameter continuation away from the equator.
+
+\subsection{Regularity of the dust congruence at the axis}
+
+The main text derives $H'(0)=0$ from quadratic metric expansions and a
+timelike stationary Killing field at the axis. A complementary argument
+uses the dust four-velocity. It applies when the stationary field is
+assumed only to be nonzero there, provided the material congruence has a
+$C^1$ timelike extension. We first show that $C^1$ regularity of an axisymmetric azimuthal vector field $X=\omega m$ forces its coefficient $\omega$ to approach a finite limit at the axis.
+\begin{lemma}\label{lem:smooth-azimuthal-coefficient}
+Let $X=\omega m$ be an axisymmetric vector field on a punctured
+neighbourhood of a regular axis segment. If $X$ extends across the axis
+as a $C^1$ vector field, then $\omega$ has a finite axis limit.
+\end{lemma}
+\begin{proof}
+In transverse Cartesian coordinates, $m=-y\partial_x+x\partial_y$, and 
+the continuous extension of an axisymmetric purely azimuthal field
+vanishes on the axis. Along $y=0$, $x>0$, we therefore have
+\begin{equation}
+\omega(x,0,z)=\frac{X^y(x,0,z)-X^y(0,0,z)}{x}
+\longrightarrow\partial_xX^y(0,0,z).
+\end{equation}
+Axisymmetry makes the same finite limit valid in every transverse
+radial direction. Continuity of the first derivatives gives the
+corresponding limit as the axis point varies.
+\end{proof}
+For $\ellzero\neq 0$, the constant-$\ell$ angular velocity has the
+expansion
+\begin{equation}\label{eq:constant-l-omega-axis}
+\Omega(\eta)=-\frac{C\ellzero}{2}\log|\eta|+O(1)
+\end{equation}
+as $\eta\to 0$ from either side. This follows from
+$\operatorname{Ei}(x)=\gamma_{\mathrm E}+\log|x|+O(x)$
+\cite[Eqs.~6.2.6--6.2.7]{NISTDLMF}. A fixed reference scale inside the
+logarithm changes only the bounded term. Combining the preceding lemma with the logarithmic behaviour of $\Omega$, we show that a nontrivial constant-$\ell$ branch admitting a regular timelike extension of the dust congruence to the axis must satisfy $\ell_0=0$ under the hypotheses below.
+\begin{theorem}\label{thm:regular-axis-constant-l-no-go}
+Let an exact stationary, axisymmetric rotating-dust solution of the
+$(\eta,H)$ family be defined on a connected invariant region
+$\mathcal U$ whose closure meets a regular axis segment $\mathcal A$.
+Assume that the metric extends as a $C^2$ Lorentz metric across
+$\mathcal A$, that the stationary Killing field $k$ is nonzero there,
+and that the axial field $m$ has period $2\pi$. Further assume also that the dust four-velocity extends as a $C^1$ timelike field to every regular limit point of the branch. Suppose $H<0$, $|\eta|/r<1$ away from the axis, and $H_{,\eta}/H=\ellzero$ on the
+connected range of $\eta$. If $\eta\not\equiv0$, then $\ellzero=0$.
+\end{theorem}
+\begin{proof}
+Subluminality gives $|\eta|<r$, so $\eta\to 0$ on approaching the
+regular axis. Let us choose a connected component $\mathcal U_*$ of the
+nonempty open set $\{\eta\neq 0\}\cap\mathcal U$.
+If $\mathcal U_*=\mathcal U$, its closure meets $\mathcal A$.
+Otherwise its relative boundary in the connected region $\mathcal U$
+is nonempty and consists of points where $\eta=0$.
+Thus, there is a sequence $p_j\in\mathcal U_*$ tending to either a
+regular axis point or a regular interior point, with $\eta(p_j)\longrightarrow 0$. On $\mathcal U_*$ the velocity decomposes as $u=U(k+\Omega m)$, $U=(-H)^{-1/2}$, and the constant-$\ell$ law gives $U(p_j)\longrightarrow C^{-1/2}>0$. If $\ellzero\neq 0$, then $|\Omega(p_j)|\to\infty$ by
+\eqref{eq:constant-l-omega-axis}. At an interior limit with $r>0$, the identity $\det G=-r^2$ makes $k,m$ linearly independent. A smooth local one-form $\vartheta$ can
+therefore be chosen with $\vartheta(k)=0$ and $\vartheta(m)=1$.
+Then, $\vartheta(u)=U\Omega$ diverges, contrary to continuity.
+At an axis limit, the commuting actions and the nonvanishing of $k$
+provide a regular local time coordinate and a smooth one-form
+$\tau$ with $\tau(k)=1$, $\tau(m)=0$. The identity $U=\tau(u)$
+shows that $U$ extends as a $C^1$ scalar. Hence,
+$X=u-Uk=U\Omega m$ extends as a $C^1$ azimuthal vector field.
+The lemma implies a finite limit of $U\Omega$. Since $U\to C^{-1/2}>0$, this contradicts the divergence of $\Omega$. Both alternatives force $\ellzero=0$.
+\end{proof}
+For $\ellzero=0$, the angular velocity is a finite constant and
+$\eta=g(k,m)+\Omega_0g(m,m)$. Quadratic axis regularity gives
+$\eta=O(r^2)$ and $v=O(r)$ as in the main text. The stationary
+field is timelike at the axis in this case, because the extended
+four-velocity there is $C^{-1/2}k$. The analytic continuation proof of the axis-connected flat-trace exclusion therefore also applies under the hypotheses of the theorem
+above. This preserves the conclusion when regularity of the material
+congruence supplies the axis information.
+
+\subsection{The explicit zero-parameter continuation}
+
+On the zero-parameter branch, the auxiliary equation determines the full reflection-symmetric continuation of a flat trace in closed form.
+\begin{corollary}\label{cor:explicit-rigid-flat-continuation}
+For $\ellzero=0$, the analytic solution with data
+$v(r,0)=v_0$, $v_z(r,0)=0$, where $0<v_0<1$ and $r$ lies near a
+fixed $r_*>0$, is the restriction of
+\begin{equation}\label{eq:explicit-rigid-flat-solution}
+v(r,z)=v_0\frac{\sqrt{r^2+z^2}}{r}.
+\end{equation}
+Its equatorial trace is a strict vertical minimum, with
+\begin{equation}\label{eq:rigid-flat-trace-minimum}
+v_{zz}(r,0)=\frac{v_0}{r^2}>0.
+\end{equation}
+At fixed $r>0$, the velocity reaches unity at $|z|=r\sqrt{v_0^{-2}-1}$.
+\end{corollary}
+\begin{proof}
+Let us set $R=\sqrt{r^2+z^2}$. For a function depending only on $R$
+\begin{equation}
+\partial_{rr}f-r^{-1}\partial_rf+\partial_{zz}f=f''(R).
+\end{equation}
+Hence, $\eta=v_0R$ solves $\mathcal L\eta=0$ and has the prescribed
+Cauchy data. Analytic uniqueness yields \eqref{eq:explicit-rigid-flat-solution} while 
+differentiation gives the transverse curvature. Solving $v=1$
+gives the stated height. The formula increases strictly with $|z|$
+for $z\neq 0$, so its subluminal region is bounded by these heights.
+\end{proof}
+
+\section{Further radial-span estimates and trace controls}
+\label{supp:span-analysis}
+
+This section supplements the radial-span analysis in the main article. We first determine the dependence on an inner-edge calibration when only density positivity is imposed. We then optimize the universal positive-$\ellzero$ bound, refine its drift estimate, and describe the remaining sharpness problem. For use throughout this section, we recall the equatorial variables of the manuscript. Set $u(r)=v(r,0)$, $\sigma=\log(r/R_1)$, and $\Lambda=\log(R_2/R_1)$, with a dot denoting $d/d\sigma$. Then
+\begin{equation}\label{eq:supp-equatorial-variables}
+s=\frac{d\log u}{d\sigma},\qquad
+y=\frac{\ellzero r}{u},\qquad
+Z=\frac{r^2v_{zz}(r,0)}{u},\qquad
+A=2+y(1-u^2).
+\end{equation}
+The estimates with transverse concavity use the following common assumptions, which are those of the universal radial-span theorem in the manuscript.
+\begin{definition}\label{def:supp-span-hypotheses}
+Let $v$ be a $C^2$ reflection-symmetric solution of the exact constant-$\ell$ equation near $[R_1,R_2]\times\{0\}$, where $0<R_1<R_2$. For some $0\leqslant\varepsilon<1$, assume throughout the equatorial interval that
+\begin{equation}\label{eq:supp-span-hypotheses}
+0<u<1,\qquad \rho(r,0)\geqslant0,\qquad
+v_{zz}(r,0)\leqslant0,\qquad |s|\leqslant\varepsilon.
+\end{equation}
+\end{definition}
+Reflection symmetry makes the transverse condition equivalent to the invariant rapidity-concavity condition in the manuscript. The first estimate below uses only the density and slope assumptions, as specified in its statement.
+\begin{corollary}\label{cor:density-only-approx-flat-bound}
+Let a positive subluminal equatorial trace be $\varepsilon$-flat, with $0\leqslant\varepsilon<1$, on $[R_1,R_2]$. Assume that it belongs to a reflection-symmetric exact constant-$\ell$ solution with nonnegative density on the trace and $\ellzero>0$. Define
+\begin{equation}\label{eq:gamma-inner-rotation-strength}
+\gamma_1=\frac{\ellzero R_1}{u(R_1)},\qquad
+\underline v=\min_{[R_1,R_2]}u.
+\end{equation}
+Then
+\begin{equation}\label{eq:density-only-span-bound}
+\frac{R_2}{R_1}\leqslant
+\left[\frac{2}{\gamma_1(1+\underline v^2)}\right]^{1/(1-\varepsilon)}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+Since $\dot y=(1-s)y$ and $|s|\leqslant\varepsilon$, integration yields
+\begin{equation}\label{eq:y-integrated-growth-density-only}
+\log\frac{y(R_2)}{\gamma_1}=\int_0^\Lambda(1-s)\,d\sigma
+\geqslant(1-\varepsilon)\Lambda.
+\end{equation}
+Nonnegative density and $\eta_r=u(1+s)>0$ give
+$y(R_2)\leqslant2/[1+u(R_2)^2]\leqslant 2/(1+\underline v^2)$.
+Substitution and exponentiation prove the result.
+\end{proof}
+The calibration used in \cite{Astesiano2022EPJC} has
+\begin{equation}\label{eq:paper-edge-calibration-approx}
+R_1=\RG,\qquad
+\ellzero=\frac{a\vc}{\RG},\qquad
+u(\RG)=a\vc,
+\end{equation}
+so $\gamma_1=1$ and
+\begin{equation}\label{eq:paper-edge-approx-flat-bound}
+\frac{R_2}{\RG}\leqslant
+\left(\frac{2}{1+\underline v^2}\right)^{1/(1-\varepsilon)}.
+\end{equation}
+For an exactly flat trace this becomes $R_2/\RG\leqslant2/(1+a^2\vc^2)$. The dependence on $\gamma_1$ is essential. The right-hand side of Eq.~\eqref{eq:density-only-span-bound} diverges as $\gamma_1\downarrow 0$. Thus, this argument supplies a bound for a calibrated branch. A universal bound requires the additional vertical-shape hypothesis used in the main article.
+
+\subsection{Optimization of the positive-\texorpdfstring{$\ell$}{ell} comparison}
+
+For $0<\varepsilon<1$, $0<\alpha<1-\varepsilon$, and $0<\underline v<1$, the positive-parameter comparison function is
+\begin{equation}\label{eq:supp-positive-comparison}
+\mathcal B_+(\varepsilon,\alpha,\underline v)=\frac{\varepsilon(2+\alpha)}{(1+\varepsilon)(1-\varepsilon-\alpha)}+\frac{1}{1-\varepsilon}\log\frac{2}{(1+\underline v^2)\alpha}.
+\end{equation}
+This is the bound obtained in the manuscript. The next result shows that its dependence on $\alpha$ can be optimized explicitly.
+\begin{corollary}\label{cor:optimized-approx-flat-span}
+For $0<\varepsilon<1$, let us set
+\begin{equation}\label{eq:K-epsilon}
+K_\varepsilon=\frac{\varepsilon(3-\varepsilon)(1-\varepsilon)}{1+\varepsilon}
+\end{equation}
+and
+\begin{equation}\label{eq:alpha-optimal}
+\alpha_\varepsilon=1-\varepsilon+\frac{K_\varepsilon}{2}
+-\frac12\sqrt{K_\varepsilon\bigl[K_\varepsilon+4(1-\varepsilon)\bigr]}.
+\end{equation}
+Then, $\alpha_\varepsilon\in(0,1-\varepsilon)$ is the unique minimizer of $\mathcal B_+(\varepsilon,\alpha,\underline v)$. Under the hypotheses of Definition~\ref{def:supp-span-hypotheses}, with $\ellzero>0$ and $\underline v=\min_{[R_1,R_2]}u$,
+\begin{equation}\label{eq:optimized-positive-l-ratio}
+\frac{R_2}{R_1}\leqslant
+\exp\bigl[\mathcal B_+(\varepsilon,\alpha_\varepsilon,\underline v)\bigr].
+\end{equation}
+For fixed $\underline v$, the optimized logarithmic bound satisfies
+\begin{equation}\label{eq:optimized-small-epsilon-expansion}
+\inf_{0<\alpha<1-\varepsilon}
+\mathcal B_+(\varepsilon,\alpha,\underline v)
+=\log\frac{2}{1+\underline v^2}
++2\sqrt{3\varepsilon}+O(\varepsilon)
+\end{equation}
+as $\varepsilon\downarrow 0$.
+\end{corollary}
+\begin{proof}
+For fixed $\varepsilon$ and $\underline v$, the function $\mathcal B_+$ diverges at both endpoints of $(0,1-\varepsilon)$. Its derivative vanishes precisely when $(1-\varepsilon-\alpha)^2=K_\varepsilon\alpha$. The quotient $(1-\varepsilon-\alpha)^2/\alpha$ decreases strictly from $+\infty$ to zero. Hence, the stationary point is unique. Solving the quadratic equation gives Eq.~\eqref{eq:alpha-optimal}, and the endpoint divergence makes it the global minimizer. For small $\varepsilon$, we find
+\begin{equation}
+K_\varepsilon=3\varepsilon+O(\varepsilon^2),\qquad
+\alpha_\varepsilon=1-\sqrt{3\varepsilon}+O(\varepsilon),
+\end{equation}
+and hence
+\begin{equation}
+\frac{\varepsilon(2+\alpha_\varepsilon)}
+{(1+\varepsilon)(1-\varepsilon-\alpha_\varepsilon)}=\sqrt{3\varepsilon}+O(\varepsilon),\quad
+-\log\alpha_\varepsilon=\sqrt{3\varepsilon}+O(\varepsilon).
+\end{equation}
+Using $(1-\varepsilon)^{-1}=1+O(\varepsilon)$ gives the asserted expansion.
+\end{proof}
+
+\subsection{The trace control system and analytic realization}
+\label{subsec:approx-flat-sharpness}
+
+For positive $\ellzero$, we define the drift
+\begin{equation}\label{eq:positive-l-control-drift}
+\mathfrak g(u,y,s)=\frac{2(1+s)\bigl[(1-s)-y(1-u^2s)\bigr]}
+{2+y(1-u^2)}.
+\end{equation}
+The exact equatorial identity is equivalent to
+\begin{equation}\label{eq:positive-l-control-system}
+\dot u=su,\qquad
+\dot y=(1-s)y,\qquad
+\dot s=\mathfrak g(u,y,s)+w,\qquad w=-Z\geqslant0,
+\end{equation}
+with state constraints
+\begin{equation}\label{eq:positive-l-control-state}
+0<u<1,\qquad
+0<y\leqslant\frac{2}{1+u^2},\qquad
+|s|\leqslant\varepsilon.
+\end{equation}
+The initial values are tied to the fixed branch by $y(0)=\ellzero R_1/u(0)$. The first two equations preserve $yu=\ellzero R_1e^\sigma$. Thus, the control description respects the original relation between $u$, $y$, and the radial coordinate. Every equatorial trace satisfying the main hypotheses gives a trajectory of this system. Its logarithmic radial span is the time spent inside the state region. The control $w$ represents the negative transverse curvature and can only increase the slope derivative relative to the drift. An arbitrary formal trajectory need not have the regularity required for a local solution of the full equation. The analytic lifting lemma below gives a sufficient condition for realization. There is also a geometric interpretation in terms of the auxiliary trace. Set $X=r^2$ and
+$f(X)=\Phi_{\ellzero}(r,ru(r))$. Differentiating twice gives
+\begin{equation}\label{eq:control-convexity-equivalence}
+\frac{d^2f}{dX^2}=\frac{uA}{4r^3}\bigl(\dot s-\mathfrak g(u,y,s)\bigr)
+=\frac{uA}{4r^3}w.
+\end{equation}
+Since $uA>0$, the vertical-shape condition is equivalent to convexity of this auxiliary trace as a function of $r^2$.
+\begin{lemma}\label{lem:analytic-lifting-trace-controls}
+Let $u$ be positive and real analytic near a compact radial interval separated from the axis. Define $s$ and $y$ from $u$ as in the main article. Suppose the state inequalities in Eq.~\eqref{eq:positive-l-control-state} are strict and $\dot s>\mathfrak g(u,y,s)$. Then, $u$ is the equatorial trace of a reflection-symmetric real-analytic local solution of the exact constant-$\ell$ velocity equation. The solution has $\rho>0$ and $0<v<1$ on a neighbourhood of the interval, and $v_{zz}(r,0)<0$ throughout the trace.
+\end{lemma}
+\begin{proof}
+Let us prescribe the analytic Cauchy data
+\begin{equation}
+\mathcal F(r,0)=\Phi_{\ellzero}(r,ru(r)),\qquad
+\mathcal F_z(r,0)=0
+\end{equation}
+for $\mathcal F_{zz}=-\mathcal F_{rr}+r^{-1}\mathcal F_r$. The Cauchy--Kowalevski theorem gives an analytic solution near each point of the interval. Uniqueness identifies the local solutions on overlaps, and compactness provides a common neighbourhood. Since $A=\partial_\eta\Phi_{\ellzero}>0$, the analytic implicit-function theorem recovers $\eta$ on the prescribed inverse sheet. The linearizing identity then gives the exact velocity equation. Reflection symmetry follows from uniqueness of the auxiliary Cauchy problem and of the inverse. On the trace, we have $Z=\mathfrak g(u,y,s)-\dot s<0$. The strict density interval and $\eta_r=u(1+s)>0$ give positive density there. Positive density and subluminality persist on a smaller neighbourhood by continuity.
+\end{proof}
+This construction is an analytic local existence statement. Stability of the elliptic Cauchy problem, extension to the axis, and matching to an exterior require separate arguments.
+
+\subsection{A strict refinement for positive \texorpdfstring{$\ell$}{ell}}
+
+The comparison in the main article estimates the terms in the drift separately. The next result shows that minimizing the full drift over the relevant state enclosure produces a strict improvement.
+\begin{theorem}\label{thm:refined-positive-l-span}
+Assume the hypotheses of Definition~\ref{def:supp-span-hypotheses}, with $0<\varepsilon<1$ and $\ellzero>0$. Let $v_{\min}=\underline v\in(0,1)$ and $0<\alpha<1-\varepsilon$. Further define
+\begin{align}
+c_+(\varepsilon,\alpha,v_{\min})&=\frac{2(1+\varepsilon)
+[1-\varepsilon-\alpha(1-v_{\min}^2\varepsilon)]}
+{2+\alpha(1-v_{\min}^2)},\label{eq:c-plus-refined}\\
+c_-(\varepsilon,\alpha,v_{\min})&=\begin{cases}
+\displaystyle
+\frac{2(1-\varepsilon)
+[1+\varepsilon-\alpha(1+v_{\min}^2\varepsilon)]}
+{2+\alpha(1-v_{\min}^2)},
+&\displaystyle\alpha\leqslant\frac{1-\varepsilon}{1+\varepsilon},\\[3mm]
+(1-\varepsilon^2)(1-\alpha),
+&\displaystyle\alpha>\frac{1-\varepsilon}{1+\varepsilon},
+\end{cases}
+\label{eq:c-minus-refined}\\
+c_*(\varepsilon,\alpha,v_{\min})&=\min\{c_+,c_-\}.
+\label{eq:c-star-refined}
+\end{align}
+Then $c_*>0$ and
+\begin{equation}\label{eq:refined-positive-l-bound}
+\Lambda\leqslant\mathcal B_*(\varepsilon,\alpha,v_{\min})
+=\frac{2\varepsilon}{c_*}+\frac{1}{1-\varepsilon}
+\log\frac{2}{(1+v_{\min}^2)\alpha}.
+\end{equation}
+Writing
+\begin{equation}\label{eq:c-zero-old-comparison}
+c_0(\varepsilon,\alpha)=\frac{2(1+\varepsilon)(1-\varepsilon-\alpha)}{2+\alpha},
+\end{equation}
+we have
+\begin{equation}\label{eq:strict-positive-l-gap}
+c_*>c_0,\qquad\mathcal B_*<\mathcal B_+.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:strict-gap-from-old-optimum}
+\Lambda\leqslant
+\inf_{0<\alpha<1-\varepsilon}
+\mathcal B_+(\varepsilon,\alpha,v_{\min})-\delta(\varepsilon,v_{\min}),
+\end{equation}
+where
+\begin{equation}
+\delta(\varepsilon,v_{\min})
+=2\varepsilon\left[\frac{1}{c_0(\varepsilon,\alpha_\varepsilon)}
+-\frac{1}{c_*(\varepsilon,\alpha_\varepsilon,v_{\min})}\right]>0.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Set $x=u^2$. Where $y\leqslant\alpha$, the exact inequality is $\dot s\geqslant\mathfrak g(u,y,s)$. Differentiation gives
+\begin{equation}
+\partial_y\mathfrak g=\frac{2(1+s)(sx+s+x-3)}{[2+y(1-x)]^2},\quad
+\partial_x\mathfrak g=\frac{2y(1+s)[(1+s)-y(1-s)]}{[2+y(1-x)]^2}.
+\end{equation}
+For $|s|\leqslant\varepsilon<1$ and $0\leqslant x<1$, the first derivative is negative. Thus,  the minimum over $0<y\leqslant\alpha$ occurs at $y=\alpha$. For fixed $x$, the numerator of $\mathfrak g$ is a strictly concave quadratic in $s$, because $\alpha x<1$. Its minimum on $[-\varepsilon,\varepsilon]$ therefore lies at an endpoint. At $s=\varepsilon$, the derivative with respect to $x$ is positive. Minimizing over $v_{\min}^2\leqslant x<1$ gives $c_+$ at $x=v_{\min}^2$. At $s=-\varepsilon$, that derivative has the sign of $(1-\varepsilon)-\alpha(1+\varepsilon)$. If this quantity is nonnegative, the minimum occurs at $x=v_{\min}^2$. If it is negative, the infimum is the limit as $x\uparrow 1$. These are precisely the two cases defining $c_-$. Both endpoint values are positive for $0<\alpha<1-\varepsilon$, so $c_*>0$. It follows that $\dot s\geqslant c_*$ on the initial portion with $y\leqslant\alpha$. Its logarithmic length is at most $2\varepsilon/c_*$. On the remaining portion, $d\log y/d\sigma\geqslant1-\varepsilon$ and $y\leqslant2/(1+v_{\min}^2)$. Adding the two length estimates proves Eq.~\eqref{eq:refined-positive-l-bound}. To prove strict improvement, direct subtraction gives
+\begin{equation}\label{eq:c-plus-strict-difference}
+c_+-c_0=\frac{2\alpha v_{\min}^2(1+\varepsilon)
+[1+\varepsilon-\alpha(1-\varepsilon)]}{(2+\alpha)[2+\alpha(1-v_{\min}^2)]}>0.
+\end{equation}
+When $\alpha\leqslant(1-\varepsilon)/(1+\varepsilon)$, monotonicity in $x$ at $s=-\varepsilon$ yields $c_-\geqslant\mathfrak g(0,\alpha,-\varepsilon)$ and
+\begin{equation}\label{eq:c-minus-first-strict-difference}
+\mathfrak g(0,\alpha,-\varepsilon)-c_0=\frac{4\alpha\varepsilon}{2+\alpha}>0.
+\end{equation}
+For the complementary case,
+\begin{equation}\label{eq:c-minus-second-strict-difference}
+c_--c_0=\frac{\alpha(1+\varepsilon)
+[1+\varepsilon-\alpha(1-\varepsilon)]}{2+\alpha}>0.
+\end{equation}
+Thus $c_*>c_0$. The logarithmic term is unchanged, while the first term of $\mathcal B_+$ is $2\varepsilon/c_0$. Evaluating the strict difference at its optimizer $\alpha_\varepsilon$ proves the final assertion.
+\end{proof}
+This refinement minimizes the drift over a rectangular enclosure of the state region and then adds two separate length estimates. The exact optimum for fixed positive $\ellzero$ and $\varepsilon>0$ remains open, and it depends on the coupled evolution of $(u,y,s)$, including possible segments on the slope boundary $s=\varepsilon$. A sustained segment on that boundary requires $\mathfrak g(u,y,\varepsilon)\leqslant 0$, because the control is nonnegative. The density boundary imposes a further state constraint. Any proposed optimizer must satisfy both requirements and admit the desired local realization by the full field equation.
+
+\subsection{Approximation by strictly negative branches}
+
+By constructing analytic solutions with $\ell_0\uparrow 0$, we show that strictly negative branches can approach the sharp span bound attained on the zero-parameter branch.
+\begin{proposition}\label{prop:strict-negative-l-asymptotic-sharpness}
+For every $0<\varepsilon<1$, the supremum of the logarithmic span over analytic solutions with $\ellzero<0$ satisfying the hypotheses of Definition~\ref{def:supp-span-hypotheses} is $2\operatorname{artanh}\varepsilon$. Each individual nondegenerate trace has strictly smaller span. A sequence of reflection-symmetric solutions with $v_{zz}=0$ and $\ellzero\uparrow0$ approaches the supremum.
+\end{proposition}
+\begin{proof}
+Under the radial-span hypotheses, the exact equatorial identity and the density interval give $A>0$ and
+\begin{equation}\label{eq:supp-negative-slope-gap}
+\dot s-(1-s^2)\geqslant-\frac{y(1+s)\bigl[3-u^2-(1+u^2)s\bigr]}{A}>0
+\end{equation}
+when $\ellzero<0$. Indeed, $y<0$, $1+s>0$, and the bracket is positive for $u<1$ and $s<1$. Integrating $\dot s/(1-s^2)>1$ gives the strict inequality for the logarithmic span. For the limiting construction, we start with the $\ellzero=0$ solution
+\begin{equation}
+u(t)=a\cosh t,\qquad s(t)=\tanh t,\qquad r=r_0e^t,
+\end{equation}
+and choose $a>0$ small enough that subluminality holds with a positive margin on an interval slightly larger than $|t|\leqslant\operatorname{artanh}\varepsilon$. Its auxiliary field is
+\begin{equation}
+\mathcal F_0(r)=2\eta_0(r)=a\left(\frac{r^2}{r_0}+r_0\right).
+\end{equation}
+Let us keep this field fixed. Since $\partial_\eta\Phi_0=2$, the analytic implicit-function theorem solves $\Phi_{\ellzero}(r,\eta_{\ellzero}(r))=\mathcal F_0(r)$ on a common annulus for all sufficiently small negative $\ellzero$. The resulting fields are independent of $z$ and solve the full exact velocity equation. Their speeds and slopes converge with the required derivatives to the limiting ones. Moreover, the density factor and $\eta_r$ remain positive on the compact annulus, so density positivity persists. At the limiting crossings $s=\pm\varepsilon$, the derivative is $\dot s=1-\varepsilon^2>0$. The implicit-function theorem preserves both crossings for small negative $\ellzero$. Derivative convergence also keeps the slope strictly increasing between them. Thus, the corresponding intervals are $\varepsilon$-flat, and their logarithmic spans converge to $2\operatorname{artanh}\varepsilon$. Every constructed field has $v_{zz}=0$, completing the proof.
+\end{proof}
+
+\section{Edge calibration and large-radius consistency}
+\label{supp:retained-asymptotics}
+
+The main article derives asymptotic restrictions from the exact metric.
+For comparison, this section examines the logarithmic expressions in
+Sect.~4 of \cite{Astesiano2022EPJC} and specifies the additional assumption required to use them at large radius. Let us recall that the constant-field residual in the manuscript provides a direct test of the edge calibration
+\begin{equation}\label{eq:paper-choice}
+\ellzero=\frac{a\vc}{\RG},\qquad v_0=a\vc=\ellzero\RG.
+\end{equation}
+Substitution gives
+\begin{equation}\label{eq:paper-residual}
+\ET[a\vc]=\EE[a\vc]=\frac{2a\vc}{r^2}\left(\frac r\RG-1\right).
+\end{equation}
+For $a\vc\neq 0$, this vanishes only at $r=\RG$. Writing $r=\RG(1+\delta)$ yields
+\begin{equation}\label{eq:delta-residual}
+\ET[a\vc]=\frac{2a\vc}{\RG^2}
+\left[\delta-2\delta^2+O(\delta^3)\right].
+\end{equation}
+Freezing the radial coefficients at $r/\RG=1$ therefore retains the zeroth-order edge relation. A controlled expansion about the edge must account for the linear residual through a nonconstant correction. The corresponding density restriction for an equatorial trace is given in Section~\ref{supp:span-analysis}.
+
+\subsection{The conditional large-radius test}
+
+The coordinate angular velocity of the dust and the angular velocity of
+the ZAMO congruence are distinct. The former is $\Omega=d\phi/dt$ and the
+latter is the metric shift $\OmZ=-g_{t\phi}/g_{\phi\phi}$. Under the constant-field and constant-$\ell$ approximation of \cite{Astesiano2022EPJC}, the additive integration constant in
+$\Omega$ can be absorbed into a reference scale $r_0>0$ when
+$\ellzero\neq 0$. At this order, the angular velocity and metric components take the form
+\begin{equation}
+\Omega^{(1)}(r)=-\frac{\ellzero}{2}\log(r/r_0),\quad
+g_{tt}^{(1)}=-1,\quad
+g_{t\phi}^{(1)}=\frac{\ellzero}{2}r^2\log(r/r_0)+v_0r,\quad
+g_{\phi\phi}^{(1)}=r^2.
+\end{equation}
+The superscript marks quantities evaluated at this order of approximation. Substitution into
+the shift definition gives
+\begin{equation}\label{eq:logarithmic-zamo-shift}
+\OmZ^{(1)}=-\frac{\ellzero}{2}\log(r/r_0)-\frac{v_0}{r}.
+\end{equation}
+The estimates below depend on the growth orders of these terms.
+\begin{proposition}\label{prop:asymptotic-constraint}
+Suppose a stationary axisymmetric end satisfies the asymptotically
+nonrotating falloff of the main article. Assume that its exact mixed
+component obeys
+\begin{equation}\label{eq:asymptotic-log-ansatz}
+g_{t\phi}(r,0)
+=\frac{\ellzero}{2}r^2\log(r/r_0)+v_0r+o(r^2\log r)
+\end{equation}
+as $r\to\infty$, with fixed $r_0>0$ and finite constant $v_0$. Then $\ellzero=0$.
+\end{proposition}
+\begin{proof}
+Since $\log(r/r_0)/\log r\to 1$ as $r\to\infty$, dividing Eq.~\eqref{eq:asymptotic-log-ansatz} by $r^2\log r$ gives
+\begin{equation}
+\lim_{r\to\infty}\frac{g_{t\phi}(r,0)}{r^2\log r}=\frac{\ellzero}{2}.
+\end{equation}
+The azimuthal falloff lemma in the manuscript gives $g_{t\phi}(r,0)=O(1)$ on the asymptotically flat end. The same limit is therefore zero, which forces $\ellzero=0$.
+\end{proof}
+If also $g_{\phi\phi}=r^2(1+o(1))$, the same ansatz gives
+$\OmZ/\log r\to-\ellzero/2$, whereas asymptotic flatness requires
+$\OmZ=O(r^{-2})$. Thus, either metric component gives the same condition. If these approximate expressions are assumed to hold exactly, setting
+$\ellzero=0$ leaves $g_{t\phi}^{(1)}=v_0r$. A fixed nonzero $v_0$ is
+then also incompatible with the required $O(1)$ mixed-component bound. Notice that the conditional hypothesis on the remainder is essential. The exact
+relation $H=-Ce^{\ellzero\eta}$ is expanded, after setting $C=1$, as
+\begin{equation}\label{eq:H-linearization-asymptotic-section}
+H=-e^{\ellzero v_0r}\simeq-(1+\ellzero v_0r).
+\end{equation}
+Its dimensionless expansion parameter is $\varepsilon(r)=\ellzero v_0r$. For fixed $\ellzero v_0\neq 0$, its magnitude grows without bound. The approximation therefore cannot remain uniformly valid on an unbounded end. The mixed component in an asymptotically orthonormal
+azimuthal direction also grows
+\begin{equation}\label{eq:orthonormal-mixed-growth}
+\frac{g_{t\phi}^{(1)}}{\sqrt{g_{\phi\phi}^{(1)}}}=\frac{\ellzero}{2}r\log(r/r_0)+v_0.
+\end{equation}
+If the logarithmic term continues to dominate, the proposition applies. If higher-order terms alter the leading behaviour, the approximate formula no longer determines the exterior asymptotics. Theorem~10 of the manuscript applies independently of this approximation to a regular nonzero constant-$\ellzero$ branch with uniformly subluminal positive speed on an asymptotically flat equatorial end.
+
+\section{Additional junction formulas}\label{supp:additional-junction}
+
+We keep the common boundary identification and normal convention of the
+main article. Equality of the induced metrics is assumed throughout this
+section. The common Killing block is $G_{AB}$, and the intrinsic meridional unit tangent is $e_s$. With the common normal orientation and jump convention of the manuscript, the Israel relation is
+\begin{equation}\label{eq:supp-israel-surface-tensor}
+8\pi G_{\rm N}S_{ab}=-[K_{ab}]+h_{ab}[K].
+\end{equation}
+Its components in the symmetry-adapted basis follow by separating the Killing directions from the meridional tangent. Decomposing Israel’s junction relation into Killing and meridional components gives explicit formulas for the surface stress and identifies the conditions under which the surface layer vanishes.
+\begin{corollary}\label{cor:symmetry-adapted-shell-tensor}
+Let us define
+\begin{equation}\label{eq:shell-defect-data}
+\Delta_{AB}=[K_{AB}],\qquad
+\Delta_s=[K_{ss}],\qquad
+\Delta_G=G^{AB}\Delta_{AB}.
+\end{equation}
+Then, the Israel surface tensor is
+\begin{equation}
+8\pi G_{\rm N}S_{AB}=-\Delta_{AB}+G_{AB}(\Delta_G+\Delta_s),\quad
+S_{As}=0,\quad
+8\pi G_{\rm N}S_{ss}=\Delta_G.
+\end{equation}
+It vanishes exactly when $\Delta_{AB}=0$ and $\Delta_s=0$.
+\end{corollary}
+\begin{proof}
+In the common proper-arclength basis, $h_{AB}=G_{AB}$, $h_{As}=0$, and
+$h_{ss}=1$. Hence, $[K]=G^{AB}\Delta_{AB}+\Delta_s=\Delta_G+\Delta_s$.
+Substitution into Eq.~\eqref{eq:supp-israel-surface-tensor}
+gives the displayed components. The mixed component vanishes because
+$K_{As}^\pm=0$. If $S_{ab}=0$, its trace first gives $[K]=0$ and its
+full expression then gives $[K_{ab}]=0$. Conversely, setting $\Delta_{AB}=\Delta_s=0$ makes every displayed component vanish.
+\end{proof}
+The Killing components encode the energy and azimuthal stress after
+projection to a physical observer frame. Their off-diagonal part carries
+the corresponding angular momentum flux. The component $S_{ss}$ gives the
+meridional stress. The interpretation of a coordinate component such as
+$S_{tt}$ requires specifying the observer normalization. A finite jump in
+the volume density creates a surface layer only when accompanied by the
+appropriate jump in the second fundamental form.
+
+We now consider cylindrical boundaries. To this purpose, we take the interior boundary $r=R_\Sigma$. Let the exterior use canonical Weyl coordinates $(\varpi,z_+)$. The orbit-area matching result in the main article places the exterior boundary at $\varpi=R_\Sigma$. Orient the common normal toward increasing canonical radius. Both generating curves are straight, so their Euclidean
+curvatures vanish. With a common intrinsic parameter $u$, the complete
+Darmois conditions are
+\begin{align}
+G_{AB}^+&=G_{AB}^-,\label{eq:cylindrical-G-match}\\
+e^{\mu_+}\left(\frac{dz_+}{du}\right)^2
+&=e^{\mu_-}\left(\frac{dz_-}{du}\right)^2,
+\label{eq:cylindrical-meridional-first-form}\\
+e^{-\mu_+/2}\partial_\varpi G_{AB}^+
+&=e^{-\mu_-/2}\partial_rG_{AB}^-,
+\label{eq:cylindrical-normal-G-match}\\
+e^{-\mu_+/2}\partial_\varpi\mu_+
+&=e^{-\mu_-/2}\partial_r\mu_-.
+\label{eq:cylindrical-mu-match}
+\end{align}
+Every quantity is evaluated on the boundary. To obtain these expressions, the Killing part of the induced metric gives the first equation and the meridional line element gives the second. The unit normals with the chosen common orientation are
+$e^{-\mu_-/2}\partial_r$ and $e^{-\mu_+/2}\partial_\varpi$. Therefore, we find
+\begin{equation}
+K_{AB}^- =\tfrac{1}{2}e^{-\mu_-/2}\partial_rG_{AB}^-,\qquad
+K_{AB}^+ =\tfrac{1}{2}e^{-\mu_+/2}\partial_\varpi G_{AB}^+.
+\end{equation}
+Vanishing Euclidean curvature yields
+\begin{equation}
+K_{ss}^- =\tfrac{1}{2}e^{-\mu_-/2}\partial_r\mu_-,\qquad
+K_{ss}^+ =\tfrac{1}{2}e^{-\mu_+/2}\partial_\varpi\mu_+.
+\end{equation}
+Equality of these components proves the last two conditions. If the chosen boundary identification additionally satisfies $z_+(u)=z_-(u)=-u$, the meridional first-form condition reduces to $\mu_+=\mu_-$. This longitudinal identification is an additional choice of boundary map. In the general case, the boundary identification must satisfy the parameter-dependent condition~\eqref{eq:cylindrical-meridional-first-form}. These formulas specify complete local boundary data. Constructing a vacuum metric that realizes them remains a field-equation problem with the global conditions described in the main article.
+
+\section{Nonlinear exterior compatibility}
+\label{supp:nonlinear-exterior}
+
+The linearized Ernst theorem in the manuscript is formulated on a fixed smooth bounded domain away from the axis. To extend this analysis to an isolated exterior, the boundary problem must incorporate decay at infinity, regularity on each axis segment, and the period conditions associated with the chosen topology. The boundary identification must also fix a common normal orientation and the stationary, axial, and twist normalizations. These choices determine which interior and exterior data can be compared. For a nonlinear formulation, suppose that the interior and exterior solution spaces $\mathcal M_{\rm dust}$ and $\mathcal M_{\rm vac}$ have compatible Banach-manifold structures after these choices and the gauge have been fixed. Their boundary maps $\mathbf D$ and $\mathbf V$ take values in a common space $\mathcal B_\Sigma$ containing the induced metric and the full second fundamental form. In local coordinates on this data space, shell-free matching is represented by the equation
+\begin{equation}\label{eq:nonlinear-matching-residual}
+\mathcal C(d,v)=\mathbf D(d)-\mathbf V(v)=0,
+\qquad (d,v)\in\mathcal M_{\rm dust}\times\mathcal M_{\rm vac}.
+\end{equation}
+Further assume that a matched configuration $(d_0,v_0)$ is available and that the boundary maps are continuously differentiable near it. If the derivative
+\begin{equation}\label{eq:linearized-full-matching-map}
+D\mathcal C_{(d_0,v_0)}(\delta d,\delta v)=D\mathbf D_{d_0}\,\delta d-D\mathbf V_{v_0}\,\delta v
+\end{equation}
+is Fredholm and surjective, its kernel is finite-dimensional, and the domain of the derivative splits as the direct sum of this kernel and a closed complementary subspace. The implicit-function theorem then gives a local manifold of matched configurations with tangent space $\ker D\mathcal C_{(d_0,v_0)}$. Applying this argument requires establishing each of these hypotheses for the chosen exterior problem. In particular, prescribing both boundary values and normal derivatives does not by itself produce a Fredholm surjective operator. One must identify compatible variations, control the asymptotic and axial behaviour, and include the orbit-area and meridional metric data alongside the Ernst variables. The manuscript establishes a compatibility test for linearized Ernst data about Minkowski space on a bounded domain. A nonlinear construction requires the corresponding analysis about a suitable matched configuration. Constructing a first such configuration and proving the nonlinear mapping properties remain open for the zero-density boundaries considered here.
+
+\section{Observer dependence and spectroscopic prediction}
+\label{supp:observables}
+
+The frequency-ratio formula in the main article displays the geometric data
+needed for a spectroscopic prediction. We give a precise statement of the
+dependence on the observer and null ray.
+\begin{proposition}\label{prop:zamo-nonidentifiability}
+The ZAMO-speed field $v$ alone does not determine the frequency shift for all
+admissible circular emitters, circular observers, and connecting null rays.
+\end{proposition}
+\begin{proof}
+Let us fix the metric, emitter, ray, and observation event. Moreover, we choose an orthonormal basis $(e_{\hat0},e_{\hat\phi})$ of the Lorentzian Killing plane at that event. The future-directed unit circular observers are $u(\beta)=\cosh\beta\,e_{\hat0}+\sinh\beta\,e_{\hat\phi}$. For fixed photon tangent $p$, their measured frequencies have the form $c_0\cosh\beta+c_1\sinh\beta$. Constancy on an open interval would force $c_0=c_1=0$. The nonzero null vector $p$ would then be orthogonal to the Killing plane and hence belong to the positive-definite meridional plane, which is impossible. Thus the observer can change the measured frequency while leaving $v$, the emitter, and the ray fixed. The local emission direction supplies another dependence. For a line of fixed rest-frame frequency, the local dust--ZAMO Doppler relation
+$\omega_{\rm e}=\Gamma\omega_{\rm Z}(1-v\cos\alpha)$ gives
+\begin{equation}\label{eq:zamo-photon-energy-fixed-line}
+\omega_{\rm Z}=\frac{\omega_{\rm e}}{\Gamma(1-v\cos\alpha)}.
+\end{equation}
+Here, $\Gamma=(1-v^2)^{-1/2}$, and $\alpha$ is the photon propagation angle relative to the positive azimuthal direction in the ZAMO frame. Even at fixed $v$, the photon energy in that frame changes with $\alpha$. For fixed observer and viewing geometry, the conserved impact parameter is selected by the global null-geodesic boundary-value problem. The scalar $v$ supplies $\eta=rv$, while reconstruction and propagation
+also use $H$, the angular velocity normalization, and the exterior metric.
+\end{proof}
+The proposition establishes dependence on additional physical inputs. A
+nonuniqueness result with a fixed complete observational setup would require
+a separate existence analysis for the global Einstein--dust problem. For circular observers approaching an asymptotic end, sufficient conditions for the rest-frame limit are
+\begin{equation}\label{eq:asymptotic-observer-rest}
+g(k,k)|_{p_{\rm o}}\to-1,\qquad
+\Omega_{\rm o}^2g_{\phi\phi}|_{p_{\rm o}}\to0,\qquad
+\Omega_{\rm o}g_{t\phi}|_{p_{\rm o}}\to0.
+\end{equation}
+They imply $U_{\rm o}\to 1$. The additional condition
+$\Omega_{\rm o}b\to0$ controls the ray factor in the frequency ratio. A complete forward problem has the form
+\begin{equation}\label{eq:observable-forward-map}
+(g,u_{\rm e},u_{\rm o},\mathcal S,\iota,\mathcal P)
+\longmapsto\{\gamma_\Theta\}\longmapsto z_{\rm obs}(\Theta).
+\end{equation}
+Here, $\Theta$ labels detector-screen position, $\mathcal S$ specifies the
+source and emission geometry, $\iota$ is the inclination, and $\mathcal P$
+is the frequency-shift and line-inference prescription. The metric includes
+the exterior and any transition region or surface layer. Approximate ray
+models require control of the resulting screen-to-source error. To transfer the local span bounds to a spectroscopic profile, one would need a quantitative comparison such as
+\begin{equation}\label{eq:required-observable-slope-control}
+\left|\frac{d\log v_{\rm spec}}{d\log R_{\rm obs}}-\frac{d\log v(r,0)}{d\log r}\right|\leqslant\delta,
+\end{equation}
+with positive profiles and controlled monotone bounds between observed and
+emission radii. Such estimates depend on the completed geometry and the
+viewing configuration.
+
+\section{Exact algebraic verification}\label{app:symbolic-reproducibility}
+
+The Python script \texttt{verify\_core\_identities.py} checks sixteen
+identities using exact arithmetic with sparse Laurent polynomials
+and rational coefficients. It requires only the Python standard
+library. Formal differentiation treats the field derivatives as jet
+variables and applies the logarithmic chain rule to the generating
+potential. The checks follow the reduction from the velocity equation to the
+metric reconstruction and equatorial estimates. They verify the exact
+linearization, the difference between the exact velocity equation and
+its low-velocity truncation, the density factorization and its two
+roots, and the lower-fold condition. For the metric reconstruction,
+they verify the Killing-block determinant, the reduction of both
+quadratures, and their integrability identity. The equatorial checks
+cover the logarithmic identity, the factorization used in the
+nonpositive-$\ell$ span estimate, and the control-drift factorization.
+Each identity is tested by expanding its residual exactly and checking
+that every rational coefficient vanishes. The verification code is available in the repository at
+\begin{center}
+  \url{https://github.com/dutykh/Constant-Ell-Rotating-Dust}
+\end{center}
+
+The analytic existence, regularity, inequality, and global
+completion arguments are supplied by the proofs in the main article and
+this supplement. The density-boundary and galactic-calibration tables are
+also included in the source package.
+
+{\small
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\bibitem[Astesiano et~al.(2022)Astesiano, Cacciatori, Gorini, and
+  Re]{Astesiano2022EPJC}
+D.~Astesiano, S.L. Cacciatori, V.~Gorini, and F.~Re.
+\newblock Towards a full general relativistic approach to galaxies.
+\newblock \emph{Eur. Phys. J. C}, 82\penalty0 (6),\penalty0\  554, 2022.
+\newblock \href{https://doi.org/10.1140/epjc/s10052-022-10506-7}{Online version}.
+
+\bibitem[DLMF()]{NISTDLMF}
+DLMF.
+\newblock Nist digital library of mathematical functions.
+\newblock \href{https://dlmf.nist.gov/}{Online reference}, 2026.
+\newblock Release 1.2.7 of 2026-06-15, accessed 2026-08-24, Sec.~6.2. F.~W.~J.
+  Olver, A.~B. Olde Daalhuis, D.~W. Lozier, B.~I. Schneider, R.~F. Boisvert,
+  C.~W. Clark, B.~R. Miller, B.~V. Saunders, H.~S. Cohl, and M.~A. McClain,
+  eds.
+
+\bibitem[Malgrange(1956)]{Malgrange1956AIF}
+Bernard Malgrange.
+\newblock Existence et approximation des solutions des {\'e}quations aux
+  d{\'e}riv{\'e}es partielles et des {\'e}quations de convolution.
+\newblock \emph{Ann. Inst. Fourier}, 6,\penalty0\  271--355, 1956.
+\newblock \href{https://doi.org/10.5802/aif.65}{Online version}.
+\end{thebibliography}
+}
+\end{document}
