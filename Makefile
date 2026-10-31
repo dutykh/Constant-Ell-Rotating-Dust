@@ -24,7 +24,6 @@ JOB := DB-DD-ConstantEll-RotatingDust-PartI
 TEX := $(JOB).tex
 BIB := references.bib
 PDF := $(JOB).pdf
-LOG := $(JOB).log
 
 FIGURES := figures/density_admissibility_phase.pdf \
 	   figures/toroidal_period_obstructions.pdf \
@@ -56,7 +55,7 @@ SOURCE_DATE_EPOCH ?= 1787616000
 FIGENV := MPLCONFIGDIR=$(MPLCONFIGDIR) SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH)
 
 .PHONY: all build rebuild manuscript figures python-checks maple verify \
-	check-style clean distclean help
+	clean distclean help
 
 .DEFAULT_GOAL := all
 .DELETE_ON_ERROR:
@@ -121,17 +120,6 @@ maple:
 	cd codes && $(MAPLE) -q rifsimp_branches.mpl
 	cd codes && $(MAPLE) -q thomas_certificates.mpl
 
-# Source and build-log audit of the manuscript. It is independent of the
-# symbolic certificates above. The build log is not kept between builds, so
-# this target recompiles unconditionally, audits, cleans up, and then reports
-# the outcome of the audit.
-check-style:
-	$(LATEXMK) -g $(LATEXMKFLAGS) $(TEX)
-	@status=0; \
-	$(PYTHON) codes/check_manuscript.py --log $(LOG) $(TEX) $(BIB) || status=$$?; \
-	$(MAKE) --no-print-directory clean; \
-	exit $$status
-
 # ---------------------------------------------------------------------------
 # Housekeeping
 # ---------------------------------------------------------------------------
@@ -156,7 +144,6 @@ help:
 	@echo '  python-checks  run the four SymPy certificates'
 	@echo '  maple          run the four Maple differential-algebra certificates'
 	@echo '  verify         python-checks followed by maple'
-	@echo '  check-style    recompile, audit the source and the build log, clean up'
 	@echo '  clean          remove the auxiliary files, keep the PDF'
 	@echo '  distclean      remove the auxiliary files and the PDF'
 	@echo '  help           show this list'

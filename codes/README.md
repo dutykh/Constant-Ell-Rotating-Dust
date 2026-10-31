@@ -42,9 +42,7 @@ encodes the displayed identities symbolically, prints `PASS` records, and
 exits nonzero if a check fails. The figure generator `generate_figures.py`
 writes three vector PDFs and `density_phase_boundaries.csv` into `figures/`,
 and `galactic_calibration.py` writes `galactic_calibration.csv` there. Each
-script overwrites only its own named artifacts. The audit script
-`check_manuscript.py` takes the manuscript TeX and BibTeX paths, with optional
-log and reference-audit paths, and emits a fail-fast textual audit.
+script overwrites only its own named artifacts.
 
 ## Principal commands
 
@@ -55,15 +53,12 @@ make figures
 make python-checks
 make maple MAPLE=/opt/maple2022/bin/maple
 make verify
-make check-style
 make rebuild
 ```
 
 The command `make verify` runs the Python certificates and then the Maple
 certificates. The command `make python-checks` alone is the right entry point
-in an environment without Maple. The audit behind `make check-style` is
-independent of the certificates: it recompiles the manuscript and audits its
-source and build log.
+in an environment without Maple.
 
 The ordinary `make` command builds the PDF and then removes the auxiliary
 files, leaving the compiled manuscript alone in the working directory. Run
@@ -94,14 +89,7 @@ target.
   representative galactic calibration and written to
   `figures/galactic_calibration.csv`;
 - `generate_figures.py`: deterministic generator for all three vector PDF
-  figures and the machine-readable density-boundary CSV;
-- `check_manuscript.py`: fail-fast LaTeX source and build-log audit;
-- `revision_tracker.py`: the authors' claim–evidence register and
-  page-accounting tool used during drafting. It reads and atomically updates a
-  `REVISION_STATE.json` drafting state, from which it regenerates a
-  human-readable dashboard. That state belongs to the private drafting
-  workspace and is not part of this repository, so the tracker has no target in
-  the `Makefile` and is not needed to reproduce any result.
+  figures and the machine-readable density-boundary CSV.
 
 `FIGURES.md` gives the scientific interpretation, exact formulas, generation
 command, relation to the manuscript, and visual-inspection record for the

@@ -115,7 +115,6 @@ where they are needed for diagnosis.
 | `make python-checks` | the four SymPy certificates |
 | `make maple` | the four Maple differential-algebra certificates |
 | `make verify` | `python-checks` followed by `maple` |
-| `make check-style` | recompile, audit the source and the build log, clean up |
 | `make clean` | remove the auxiliary files, keep the PDF |
 | `make distclean` | remove the auxiliary files and the PDF |
 | `make help` | list the targets |
@@ -155,12 +154,6 @@ The suite is retained in full. Two of its scripts, `codes/verify_variational.mpl
 and `codes/audit_physical_string_sympy.py`, certify the auxiliary variational
 algebra and the physical action and frame dictionary; the analysis they support
 is not part of the present manuscript.
-
-The audit script `codes/check_manuscript.py`, run by `make check-style`, is
-independent of the certificates. It audits citation keys, duplicate labels, PDF
-metadata, house-style inequalities and delimiters, and build-log diagnostics,
-and reports each typographic finding in the source. It takes the manuscript
-source and the bibliography database as its two arguments.
 
 The file `codes/README_MAPLE_CERTIFICATES.md` documents the encoded differential
 system, the branch assumptions, and the scope of the Maple decompositions. The
