@@ -1,6 +1,6 @@
 # Symbolic checks for
-# "Consistency, regularity, and global completion of constant-ell
-# rotating-dust galaxy models"
+# "Local realizability and global completion of constant-ell
+# rotating dust"
 #
 # Run from Maple with
 #     restart:

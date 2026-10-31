@@ -1,6 +1,5 @@
 <!--
-Constant-ell rotating-dust galaxy models, Part I:
-local realizability, sharp constraints, and global-completion obstructions.
+Local realizability and global completion of constant-ell rotating dust.
 
 Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
          Science and Technology, Abu Dhabi, UAE)
@@ -11,31 +10,33 @@ Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
 # Constant-ℓ Rotating Dust
 
 Manuscript source, symbolic certificates, validation scripts, and figure
-generators for the Batić–Dutykh study of constant-ℓ rotating-dust galaxy
-models.
+generators for the Batić–Dutykh study "Local realizability and global
+completion of constant-ℓ rotating dust".
 
 Stationary, axisymmetric rotating-dust spacetimes have been proposed as a
-general-relativistic account of flat galactic rotation curves. This work gives a
-theorem-level analysis of the constant-ℓ subclass, separating local
-realizability from regularity, positivity, asymptotic completion, junction, and
-observational requirements. The geometry is parametrized by a potential
-η(r, z) and a negative function H(η); the speed measured by zero-angular-momentum
-observers (ZAMOs) is v = η/r, and the departure from rigid rotation is encoded in
-ℓ(η) = H,η / H. The resulting hierarchy distinguishes proved identities, global
-obstructions, conditional matching criteria, and questions reserved for the
-numerical Part II.
+general-relativistic account of flat galactic rotation curves. This work asks
+when a locally realizable equatorial rotation profile of the constant-ℓ
+subclass can be completed to an isolated spacetime, and it separates the local
+equations from regularity at the axis, positivity of the density, asymptotic
+structure, junction conditions, and observational requirements. The geometry is
+parametrized by a potential η(r, z) and a negative function H(η); the speed
+measured by zero-angular-momentum observers (ZAMOs) is v = η/r, and the
+departure from rigid rotation is encoded in ℓ(η) = H,η / H. The subclass of the
+title is the one with ℓ(η) = ℓ₀ constant.
 
 ## Status
 
 **Part I is complete** and is the whole of the present repository: the
-manuscript (27 pages), its supplementary material (14 pages), three vector
-figures with their source data, and eight independent symbolic certificates in
-Maple and SymPy. The principal theorems and their proofs are in the manuscript;
-the supplement carries the supporting constructions, the further estimates, the
-explicit junction formulas, and the detailed spectroscopic formulation.
+manuscript (44 pages), three vector figures and two data tables with their
+generators, and eight independent symbolic certificates in Maple and SymPy. The
+principal theorems and their proofs are in the main text of the manuscript. Its
+appendices carry the Runge approximation and metric reconstruction, further
+axis arguments with an explicit flat trace, further radial-span estimates, the
+comparison with the near-edge approximation, the junction formulas, the
+nonlinear exterior hypotheses, and the spectroscopic formulation.
 
 **Part II, the numerical companion, is in preparation.** It will address the
-program set out in the outlook of Part I: closing the remaining sharp control
+program of the numerical companion: closing the remaining sharp control
 problem, constructing globally admissible backgrounds under the field equations
 rather than by kinematic imposition, solving the interior and the stationary
 vacuum exterior as one coupled free-boundary problem, establishing numerical
@@ -45,48 +46,54 @@ added to this repository.
 
 ## Principal results
 
-- No nonzero constant ZAMO-speed field solves the exact velocity-field equation
-  (VFE) on an open region, and none solves the retained-order truncation either;
-  the constant-field ansatz fails already at first prolongation.
-- Analytic exactly flat equatorial traces nevertheless exist locally away from
-  the axis. Their continuation is controlled by a sharp density discriminant,
-  by a Whitney fold of the point-linearising map, by axis regularity, and by
-  quantitative span bounds.
-- Density positivity at a regular noncritical point is exactly the strip
-  x₋(v) ⩽ x ⩽ x₊(v) with x = rℓ, whose lower boundary is simultaneously the fold
-  A = 0.
-- Every solution on a regular sheet is automatically analytic, and plateaux
-  propagate.
-- Elliptic Cauchy continuation of the branch is exactly Hadamard unstable.
-- Toroidal bodies carry global period obstructions: single-valuedness of the
-  reconstruction potentials is equivalent to the vanishing of explicit
-  meridional quadrature periods.
-- The global regular-axis ℓ = 0 branch is Liouville rigid.
-- A zero-density surface is only a candidate boundary. Shell-free completion
-  requires the complete Darmois data together with compatibility with a
-  gauge-fixed exterior Ernst problem.
-- The local ZAMO speed does not determine a spectroscopic rotation curve; the
-  forward map to measured frequency shifts is formulated explicitly.
+An exact point transformation reduces the velocity equation to a linear
+elliptic equation. The transformation has a Whitney fold at the lower density
+boundary, while positive density selects a regular inverse sheet on which the
+reconstructed fields are real analytic. Flat equatorial rotation curves admit
+local analytic realizations with positive density on admissible annuli. The
+auxiliary elliptic Cauchy problem is nevertheless Hadamard unstable, so
+analyticity does not give continuous dependence on smooth equatorial data.
+
+Continuation of these local solutions is constrained in three ways. Under the
+stated regularity and timelikeness hypotheses, a metric argument at a regular
+axis forces `H′(0) = 0`, so a branch with constant `ℓ₀ ≠ 0` cannot reach the
+axis. For reflection-symmetric solutions on annuli, nonnegative density and an
+invariant transverse-concavity condition for the relative ZAMO rapidity bound
+the radial span of exactly or approximately flat traces; the bounds are sharp
+for nonpositive `ℓ₀` and, in the exactly flat limit, for positive `ℓ₀`. Along
+an asymptotically flat equatorial end, a uniformly subluminal branch with
+`ℓ₀ ≠ 0` has `r·v → q > 0`, and nonnegative density near the tail then forces
+a locally flat vacuum region.
+
+For a finite body, completion requires a vacuum exterior that realizes the full
+Darmois matching data, and a zero-density surface is only a candidate boundary.
+A toroidal body whose meridional section is a disk separated from the axis
+imposes period conditions for globally single-valued exterior potentials,
+although metric regularity permits a nonzero twist period fixed by the interior
+matter-current flux. The gauge-fixed linearized Ernst equations about Minkowski
+space give a compatibility condition on a fixed smooth bounded domain away from
+the axis, expressed through a Dirichlet-to-Neumann map. It is a boundary test
+within the linearized problem and not an existence theorem for a nonlinear
+exterior. Finally, a spectroscopic prediction rests on the emitter-observer
+frequency ratio, which depends on the emitter and observer motions and on the
+connecting null rays in addition to the local ZAMO speed.
 
 ## Repository layout
 
 ```
-DB-DD-ConstantEll-RotatingDust-PartI.tex             manuscript source (REVTeX 4.2)
-DB-DD-ConstantEll-RotatingDust-PartI.bib             bibliography, 89 records
-DB-DD-ConstantEll-RotatingDust-PartI.pdf             compiled manuscript, 27 pages
-DB-DD-ConstantEll-RotatingDust-PartI-Supplement.tex  supplement source (article class)
-DB-DD-ConstantEll-RotatingDust-PartI-Supplement.pdf  compiled supplement, 14 pages
-Makefile                                             build and verification driver
-figures/                                             three vector PDFs and their source data
-codes/                                               certificates, generators, audits
-LICENSE                                              GNU LGPL v2.1
+DB-DD-ConstantEll-RotatingDust-PartI.tex   manuscript source (REVTeX 4.2)
+references.bib                             bibliography, 90 records
+DB-DD-ConstantEll-RotatingDust-PartI.pdf   compiled manuscript, 44 pages
+Makefile                                   build and verification driver
+figures/                                   three vector PDFs and two data tables
+codes/                                     certificates, generators, audits
+LICENSE                                    GNU LGPL v2.1
 ```
 
-Both documents are single-file sources. The manuscript draws its reference list
-from the bibliography database; the supplement carries its own embedded
-reference list and compiles independently of it.
+The manuscript is a single-file source that draws its reference list from the
+bibliography database.
 
-## Building the manuscript and the supplement
+## Building the manuscript
 
 Requirements: a TeX Live installation with REVTeX 4.2, `latexmk`, and GNU Make
 4.3 or newer (grouped targets are used).
@@ -95,24 +102,22 @@ Requirements: a TeX Live installation with REVTeX 4.2, `latexmk`, and GNU Make
 make
 ```
 
-This compiles both PDFs and then removes every auxiliary file, leaving the two
-PDFs alone in the working directory. Auxiliary files survive a *failed* run,
-where they are needed for diagnosis. Either document can also be built on its
-own with `make manuscript` or `make supplement`.
+This compiles the manuscript and then removes every auxiliary file, leaving the
+PDF alone in the working directory. Auxiliary files survive a *failed* run,
+where they are needed for diagnosis.
 
 | Target | Effect |
 |---|---|
-| `make`, `make build` | compile both PDFs, then remove the auxiliary files |
+| `make`, `make build` | compile the manuscript, then remove the auxiliary files |
 | `make manuscript` | compile the manuscript PDF alone |
-| `make supplement` | compile the supplement PDF alone |
 | `make rebuild` | discard every build artifact and compile afresh |
-| `make figures` | regenerate the three vector figures and the boundary CSV |
-| `make python-checks` | manuscript audit and the four SymPy certificates |
+| `make figures` | regenerate the three vector figures and the two CSV tables |
+| `make python-checks` | the four SymPy certificates |
 | `make maple` | the four Maple differential-algebra certificates |
 | `make verify` | `python-checks` followed by `maple` |
-| `make check-style` | recompile, audit house style and the build log, clean up |
-| `make clean` | remove the auxiliary files, keep the PDFs |
-| `make distclean` | remove the auxiliary files and the PDFs |
+| `make check-style` | recompile, audit the source and the build log, clean up |
+| `make clean` | remove the auxiliary files, keep the PDF |
+| `make distclean` | remove the auxiliary files and the PDF |
 | `make help` | list the targets |
 
 Tool locations are overridable: `PYTHON`, `LATEXMK`, `MAPLE`, `LATEXMKFLAGS`,
@@ -151,26 +156,26 @@ and `codes/audit_physical_string_sympy.py`, certify the auxiliary variational
 algebra and the physical action and frame dictionary; the analysis they support
 is not part of the present manuscript.
 
-`codes/check_manuscript.py` additionally audits citation keys, duplicate labels,
-PDF metadata, house-style inequalities and delimiters, and release-blocking
-build-log diagnostics. It takes the manuscript source and the bibliography
-database as its two arguments.
+The audit script `codes/check_manuscript.py`, run by `make check-style`, is
+independent of the certificates. It audits citation keys, duplicate labels, PDF
+metadata, house-style inequalities and delimiters, and build-log diagnostics,
+and reports each typographic finding in the source. It takes the manuscript
+source and the bibliography database as its two arguments.
 
-`codes/README_MAPLE_CERTIFICATES.md` documents the encoded differential system,
-the branch assumptions, and the scope of the Maple decompositions.
-`codes/README.md` gives the full file map and conventions.
+The file `codes/README_MAPLE_CERTIFICATES.md` documents the encoded differential
+system, the branch assumptions, and the scope of the Maple decompositions. The
+file `codes/README.md` gives the full file map and conventions.
 
-## Figures
+## Figures and tables
 
 ```sh
 make figures
 ```
 
 All three PDFs are pure vector output, exactly 7.0 inches wide, and sized for a
-REVTeX `figure*` at `\textwidth`. They accompany the source package; the present
-manuscript and supplement do not reproduce them. NumPy and Matplotlib are the
-only dependencies, and no random numbers or external data enter the
-calculation.
+REVTeX `figure*` at `\textwidth`. They accompany the manuscript, which does not
+reproduce them. NumPy and Matplotlib are the only dependencies, and no random
+numbers or external data enter the calculation.
 
 | Output | Size | Purpose |
 |---|---:|---|
@@ -178,26 +183,31 @@ calculation.
 | `figures/viability_gate_flow.pdf` | 7.0 × 4.45 in | local equations, density, domain topology, outer completion, and observables as necessary logical gates |
 | `figures/toroidal_period_obstructions.pdf` | 7.0 × 3.95 in | an off-axis meridional disk, the solid-torus body it sweeps, and the three period obstructions |
 
-`figures/density_phase_boundaries.csv` holds the sampled exact boundary curves
-of the density diagram. Colours follow the colour-vision-deficiency-safe
-Okabe–Ito palette, and line style, hatching, border style, and labels redundantly
-encode every scientific distinction, so the figures survive grayscale
-reproduction. Regeneration is byte-reproducible: the Makefile pins
-`SOURCE_DATE_EPOCH` so that a rerun does not perturb the committed files.
-`codes/FIGURES.md` records the exact formulas plotted, the placement of each
-figure, and the visual-inspection record.
+The table `figures/density_phase_boundaries.csv` holds the sampled exact
+boundary curves of the density diagram. The table
+`figures/galactic_calibration.csv` evaluates three exact results of the
+manuscript, the density cutoff of an exactly flat trace with positive `ℓ₀`, the
+supremum of its radial ratio, and the span bound for nonpositive `ℓ₀`, at one
+representative galactic calibration of 220 km/s and 10 kpc; its definition is in
+`codes/README.md`. Colours follow the colour-vision-deficiency-safe Okabe–Ito
+palette, and line style, hatching, border style, and labels redundantly encode
+every scientific distinction, so the figures survive grayscale reproduction.
+Regeneration is byte-reproducible in the tested environment: the Makefile pins
+`SOURCE_DATE_EPOCH` so that a rerun does not perturb the committed files. The
+file `codes/FIGURES.md` records the exact formulas plotted, the relation of the
+figures to the manuscript, and the visual-inspection record.
 
 ## Tested environment
 
 - TeX Live 2025, pdfTeX 1.40.28, REVTeX 4.2, `latexmk` 4.87, GNU Make 4.4.1
 - Python 3.14.4 with SymPy 1.14.0, NumPy 2.3.5, Matplotlib 3.10.7
-- Maple 2022.0 with `DEtools`, `DifferentialThomas`, `DifferentialGeometry`,
-  `PDEtools`, and `Physics`
+- Maple 2022.0 and 2022.1 with `DEtools`, `DifferentialThomas`,
+  `DifferentialGeometry`, `PDEtools`, and `Physics`
 - `pdfinfo` from Poppler for page accounting
 
 Recent Python 3 releases should suffice. Maple's command-line kernel starts a
-local `mserver`, so a restricted container may need permission to create a local
-socket; the scripts themselves make no network request.
+local `mserver`, so a restricted container may need permission to create a
+local socket; the scripts themselves make no network request.
 
 ## Conventions
 
@@ -221,9 +231,8 @@ sufficiency theorem, and none of this constructs an isolated global galaxy.
 ```bibtex
 @unpublished{BaticDutykh2026ConstantEllPartI,
   author = {Bati\'c, Davide and Dutykh, Denys},
-  title  = {Constant-$\ell$ rotating-dust galaxy models, {P}art~{I}:
-            local realizability, sharp constraints, and
-            global-completion obstructions},
+  title  = {Local realizability and global completion of
+            constant-$\ell$ rotating dust},
   year   = {2026},
   note   = {Preprint},
 }

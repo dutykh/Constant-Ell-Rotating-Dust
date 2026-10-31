@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the manuscript's three mechanism figures as vector PDFs.
+"""Generate the three mechanism figures of the constant-ell analysis as vector PDFs.
 
 The script deliberately avoids ``text.usetex`` so that figure regeneration
 does not depend on a particular TeX installation.  Mathematical labels use
@@ -210,8 +210,15 @@ def density_phase_figure(output_dir: Path) -> None:
         bbox={"boxstyle": "round,pad=0.24", "facecolor": WHITE, "edgecolor": BLUE, "linewidth": 0.7},
         zorder=8,
     )
-    ax.text(0.70, 0.88, r"$\mathcal{N}_v(x)<0$", ha="center", color=MID_GREY)
-    ax.text(0.69, -4.25, r"$\mathcal{N}_v(x)<0$", ha="center", color=MID_GREY)
+    outside_label = {
+        "ha": "center",
+        "va": "center",
+        "color": MID_GREY,
+        "bbox": {"boxstyle": "round,pad=0.2", "facecolor": WHITE, "edgecolor": "none", "alpha": 0.92},
+        "zorder": 8,
+    }
+    ax.text(0.19, 0.80, r"$\mathcal{N}_v(x)<0$", **outside_label)
+    ax.text(0.69, -4.25, r"$\mathcal{N}_v(x)<0$", **outside_label)
     ax.annotate(
         "orientation-preserving\ninverse sheet",
         xy=(0.57, -1.44),
@@ -337,8 +344,8 @@ def viability_flow_figure(output_dir: Path) -> None:
 
     rounded_box(
         ax,
-        (0.045, 0.765),
-        0.205,
+        (0.030, 0.765),
+        0.190,
         0.135,
         r"Exact constant-$\ell$ VFE" + "\n" + "field-equation gate",
         face="#EAF4FA",
@@ -346,8 +353,8 @@ def viability_flow_figure(output_dir: Path) -> None:
     )
     rounded_box(
         ax,
-        (0.315, 0.765),
-        0.215,
+        (0.330, 0.765),
+        0.200,
         0.135,
         "Density interval and fold" + "\n" + r"$\mathcal{N}_v\geqslant0$; $x_-\!: A=0$",
         face="#EDF7F3",
@@ -355,7 +362,7 @@ def viability_flow_figure(output_dir: Path) -> None:
     )
 
     branch = Polygon(
-        [[0.655, 0.83], [0.73, 0.92], [0.805, 0.83], [0.73, 0.74]],
+        [[0.625, 0.83], [0.73, 0.934], [0.835, 0.83], [0.73, 0.726]],
         closed=True,
         transform=ax.transAxes,
         facecolor="#FFF6DD",
@@ -376,10 +383,10 @@ def viability_flow_figure(output_dir: Path) -> None:
         zorder=4,
     )
 
-    axes_arrow(ax, (0.25, 0.832), (0.315, 0.832), colour=INK)
-    axes_arrow(ax, (0.53, 0.832), (0.653, 0.832), colour=INK)
-    ax.text(0.282, 0.852, "necessary", transform=ax.transAxes, ha="center", fontsize=6.5, color=MID_GREY)
-    ax.text(0.59, 0.852, "necessary", transform=ax.transAxes, ha="center", fontsize=6.5, color=MID_GREY)
+    axes_arrow(ax, (0.232, 0.832), (0.318, 0.832), colour=INK)
+    axes_arrow(ax, (0.542, 0.832), (0.623, 0.832), colour=INK)
+    ax.text(0.275, 0.856, "necessary", transform=ax.transAxes, ha="center", fontsize=6.5, color=MID_GREY)
+    ax.text(0.5825, 0.856, "necessary", transform=ax.transAxes, ha="center", fontsize=6.5, color=MID_GREY)
 
     rounded_box(
         ax,
@@ -399,10 +406,10 @@ def viability_flow_figure(output_dir: Path) -> None:
         face="#EEF3FA",
         edge=BLUE,
     )
-    axes_arrow(ax, (0.70, 0.755), (0.54, 0.64), colour=VERMILION)
-    axes_arrow(ax, (0.765, 0.755), (0.85, 0.64), colour=BLUE)
-    ax.text(0.61, 0.68, "yes", transform=ax.transAxes, fontsize=6.8, color=VERMILION)
-    ax.text(0.81, 0.68, "no", transform=ax.transAxes, fontsize=6.8, color=BLUE)
+    axes_arrow(ax, (0.6775, 0.778), (0.545, 0.645), colour=VERMILION)
+    axes_arrow(ax, (0.7825, 0.778), (0.850, 0.645), colour=BLUE)
+    ax.text(0.604, 0.686, "yes", transform=ax.transAxes, fontsize=6.8, color=VERMILION)
+    ax.text(0.832, 0.686, "no", transform=ax.transAxes, fontsize=6.8, color=BLUE)
 
     rounded_box(
         ax,
@@ -454,8 +461,8 @@ def viability_flow_figure(output_dir: Path) -> None:
 
     rounded_box(
         ax,
-        (0.045, 0.455),
-        0.31,
+        (0.040, 0.455),
+        0.328,
         0.17,
         "Auxiliary weighted action, Noether currents,\nand multisymplectic geometry\n\nDiagnostic structure of the VFE;\nnot the Einstein--Hilbert--dust action",
         face="#F8F0F7",
@@ -567,7 +574,16 @@ def topology_period_figure(output_dir: Path) -> None:
     ax.text(0.038, 0.87, "$z$", ha="center", va="center")
     body = Ellipse((0.205, 0.535), 0.105, 0.205, facecolor="#F7D8D0", edgecolor=VERMILION, linewidth=1.2, hatch="///")
     ax.add_patch(body)
-    ax.text(0.205, 0.535, "$B$", ha="center", va="center", fontsize=9.0, fontweight="semibold")
+    ax.text(
+        0.205,
+        0.535,
+        "$B$",
+        ha="center",
+        va="center",
+        fontsize=9.0,
+        fontweight="semibold",
+        bbox={"boxstyle": "round,pad=0.15", "facecolor": "#F7D8D0", "edgecolor": "none"},
+    )
     ax.text(0.10, 0.30, "$Q^+$", ha="center", va="center", fontsize=9.0, color=BLUE)
     gamma_theta = np.linspace(0.20 * np.pi, 2.20 * np.pi, 220)
     gamma_x = 0.205 + 0.078 * np.cos(gamma_theta)
@@ -677,7 +693,7 @@ def parse_args() -> argparse.Namespace:
         "--output-dir",
         type=Path,
         default=DEFAULT_OUTPUT_DIR,
-        help="output directory (default: revised/figures relative to this script)",
+        help="output directory (default: the figures directory beside this one)",
     )
     return parser.parse_args()
 

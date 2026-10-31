@@ -1,5 +1,6 @@
 <!--
-Constant-ell rotating-dust galaxy models, Part I: research-code package.
+Local realizability and global completion of constant-ell rotating dust:
+research-code package.
 
 Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
          Science and Technology, Abu Dhabi, UAE)
@@ -9,15 +10,16 @@ Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
 
 # Research-code package
 
-This directory contains the symbolic certificates, independent checks, and
-figure generator for Part I of the constant-$\ell$ rotating-dust study. The
-package is deliberately lightweight: the analytical proofs remain in the
-manuscript, while the programs expose the algebraic reductions and validation
-identities that materially support them.
+This directory contains the symbolic certificates, independent checks, figure
+generator, and calibration table for the study "Local realizability and global
+completion of constant-ℓ rotating dust". The package is deliberately
+lightweight: the analytical proofs remain in the manuscript, while the programs
+expose the algebraic reductions and validation identities that materially
+support them.
 
 ## Tested environment
 
-- Maple 2022.0 with `DEtools`, `DifferentialThomas`,
+- Maple 2022.0 and 2022.1 with `DEtools`, `DifferentialThomas`,
   `DifferentialGeometry`, `PDEtools`, and `Physics`;
 - Python 3.14.4, SymPy 1.14.0, NumPy 2.3.5, and Matplotlib 3.10.7;
 - TeX Live 2025, pdfTeX 1.40.28, REVTeX 4.2, and `latexmk` 4.87;
@@ -29,20 +31,20 @@ fixed seed and supplements exact symbolic endpoint checks.
 
 ## Conventions and input/output
 
-The calculations use spacetime signature $(-,+,+,+)$ and units $c=1$, with
-$G_{\rm N}$ retained in the physical action and junction formulas. The
-coordinates $t,r,z$ and the potential $\eta$ have dimensions of length;
-$\phi$, $v$, $H$, and $\mu$ are dimensionless; $\Omega$ and $\ell$ have
-dimensions of inverse length; and $x=r\ell$ is dimensionless. The axial
-coordinate has period $2\pi$.
+The calculations use spacetime signature (−, +, +, +) and units c = 1, with
+Newton's constant retained in the physical action and junction formulas. The
+coordinates t, r, z and the potential η have dimensions of length; φ, v, H, and
+μ are dimensionless; Ω and ℓ have dimensions of inverse length; and x = rℓ is
+dimensionless. The axial coordinate has period 2π.
 
 The certificate scripts require no external data or command-line input; each
 encodes the displayed identities symbolically, prints `PASS` records, and
-exits nonzero if a check fails. `generate_figures.py` writes three vector PDFs
-and `density_phase_boundaries.csv` into `figures/`. It overwrites only those
-named generated artifacts. `check_manuscript.py` takes the manuscript TeX and
-BibTeX paths, with optional log and reference-audit paths, and emits a
-fail-fast textual audit.
+exits nonzero if a check fails. The figure generator `generate_figures.py`
+writes three vector PDFs and `density_phase_boundaries.csv` into `figures/`,
+and `galactic_calibration.py` writes `galactic_calibration.csv` there. Each
+script overwrites only its own named artifacts. The audit script
+`check_manuscript.py` takes the manuscript TeX and BibTeX paths, with optional
+log and reference-audit paths, and emits a fail-fast textual audit.
 
 ## Principal commands
 
@@ -57,20 +59,23 @@ make check-style
 make rebuild
 ```
 
-`make verify` runs the Python certificates and then the Maple certificates.
-`make python-checks` alone is the right entry point in an environment without
-Maple.
+The command `make verify` runs the Python certificates and then the Maple
+certificates. The command `make python-checks` alone is the right entry point
+in an environment without Maple. The audit behind `make check-style` is
+independent of the certificates: it recompiles the manuscript and audits its
+source and build log.
 
 The ordinary `make` command builds the PDF and then removes the auxiliary
 files, leaving the compiled manuscript alone in the working directory. Run
 `make clean` to remove the auxiliary files while retaining an existing PDF, and
-`make distclean` to remove the PDF as well. `make help` lists every target.
+`make distclean` to remove the PDF as well. The command `make help` lists every
+target.
 
 ## File map
 
 - `constant_ell_checks.mpl`: exact branch algebra inherited from and extended
   beyond the original calculation;
-- `verify_variational.mpl`: Euler--Lagrange, polymomentum, stress, and current
+- `verify_variational.mpl`: Euler–Lagrange, polymomentum, stress, and current
   identities for the auxiliary weighted scalar action;
 - `rifsimp_branches.mpl`: generic differential-elimination branch with its
   nonvanishing assumptions exposed;
@@ -85,21 +90,36 @@ files, leaving the compiled manuscript alone in the working directory. Run
 - `audit_physical_string_sympy.py`: independent sign and coefficient checks
   for the physical action, frame dictionary, Buscher illustration, and
   axidilaton boundary estimate;
+- `galactic_calibration.py`: exact radial-span bounds evaluated at one
+  representative galactic calibration and written to
+  `figures/galactic_calibration.csv`;
 - `generate_figures.py`: deterministic generator for all three vector PDF
   figures and the machine-readable density-boundary CSV;
-- `check_manuscript.py`: fail-fast LaTeX house-style and build-log audit;
-- `revision_tracker.py`: the authors' atomic claim--evidence register and
-  page-accounting tool. It reads and atomically updates a `REVISION_STATE.json`
-  drafting state, from which it regenerates a human-readable dashboard. That
-  state belongs to the private drafting workspace and is not part of this
-  repository, so the tracker has no target in the `Makefile`; the script is
-  kept here because the manuscript's reproducibility appendix names it.
+- `check_manuscript.py`: fail-fast LaTeX source and build-log audit;
+- `revision_tracker.py`: the authors' claim–evidence register and
+  page-accounting tool used during drafting. It reads and atomically updates a
+  `REVISION_STATE.json` drafting state, from which it regenerates a
+  human-readable dashboard. That state belongs to the private drafting
+  workspace and is not part of this repository, so the tracker has no target in
+  the `Makefile` and is not needed to reproduce any result.
 
 `FIGURES.md` gives the scientific interpretation, exact formulas, generation
-command, placement, and visual-inspection record for the figures.
-`README_MAPLE_CERTIFICATES.md` explains the Maple branch certificates and
-their assumptions in more detail.
+command, relation to the manuscript, and visual-inspection record for the
+figures. `README_MAPLE_CERTIFICATES.md` explains the Maple branch certificates
+and their assumptions in more detail.
+
+## Calibration table
+
+The table `figures/galactic_calibration.csv` evaluates three exact results of
+the manuscript at one representative galactic calibration: a stellar orbital
+speed of 220 km/s and a radial scale of 10 kpc, with the dimensionless
+parameter `a = 1` and `ℓ₀ R_G = a v_c`. The density cutoff of an exactly flat
+trace with positive `ℓ₀` is `2 R_G / (1 + a² v_c²)`. The supremum of the radial
+ratio `R₂ / R₁` for the same trace is `2 / (1 + v₀²)` with `v₀ = a v_c`. The
+logarithmic span bound for nonpositive `ℓ₀` is `2 artanh(ε)`, which implies the
+radial ratio `(1 + ε) / (1 − ε)`. At this calibration the cutoff differs from
+the low-velocity value `2 R_G` by a relative amount of about `5.4 × 10⁻⁷`.
 
 Every certificate prints the identities or branches it tests and exits
 nonzero on failure. These computations are supporting evidence, not
-substitutes for the primary proofs and their independent adversarial audits.
+substitutes for the proofs in the manuscript.

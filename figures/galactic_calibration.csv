@@ -1,0 +1,22 @@
+quantity,value,unit,note
+v_c,220.0,km/s,characteristic stellar orbital speed
+v_c_over_c,0.0007338410094359345,1,dimensionless characteristic speed
+R_G,10.0,kpc,galactic radial scale
+a,1.0,1,dimensionless calibration parameter
+ell_0_times_R_G,0.0007338410094359345,1,"ell_0 R_G = a v_c, dimensionless"
+R_rho_exact,19.999989229553258,kpc,exact density-positivity cutoff
+R_rho_exact_over_2RG,0.9999994614776628,1,ratio to 2 R_G
+cutoff_relative_deficit,5.385223371678904e-07,1,1 - R_rho_exact/(2 R_G)
+Lambda_bound_eps_0,0.0,1,"2 artanh(eps), nonpositive ell_0"
+ratio_bound_eps_0,1.0,1,"R_2/R_1 bound, nonpositive ell_0"
+Lambda_bound_eps_0.01,0.020000666706669525,1,"2 artanh(eps), nonpositive ell_0"
+ratio_bound_eps_0.01,1.02020202020202,1,"R_2/R_1 bound, nonpositive ell_0"
+Lambda_bound_eps_0.02,0.040005334613699164,1,"2 artanh(eps), nonpositive ell_0"
+ratio_bound_eps_0.02,1.0408163265306123,1,"R_2/R_1 bound, nonpositive ell_0"
+Lambda_bound_eps_0.05,0.10008345855698254,1,"2 artanh(eps), nonpositive ell_0"
+ratio_bound_eps_0.05,1.105263157894737,1,"R_2/R_1 bound, nonpositive ell_0"
+Lambda_bound_eps_0.1,0.20067069546215116,1,"2 artanh(eps), nonpositive ell_0"
+ratio_bound_eps_0.1,1.2222222222222223,1,"R_2/R_1 bound, nonpositive ell_0"
+exact_flat_ratio_bound,1.9999989229553257,1,"2/(1+v_0^2), exactly flat, positive ell_0"
+eps_for_3pct_per_decade,0.012837224705172215,1,eps of a trace rising 3 percent per decade in radius
+eps_for_5pct_per_decade,0.021189299069938092,1,eps of a trace rising 5 percent per decade in radius

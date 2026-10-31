@@ -1,5 +1,6 @@
 <!--
-Constant-ell rotating-dust galaxy models, Part I: Maple certificates.
+Local realizability and global completion of constant-ell rotating dust:
+Maple certificates.
 
 Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
          Science and Technology, Abu Dhabi, UAE)
@@ -9,7 +10,7 @@ Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
 
 # Maple differential-algebra certificates
 
-These scripts provide a proportionate, machine-checkable audit of the local differential-algebra statements used in Part I. They were tested with Maple 2022.0 on 2026-08-25.
+These scripts provide a proportionate, machine-checkable audit of the local differential-algebra statements used in the manuscript. They were tested with Maple 2022.0 on 2026-08-25 and again with Maple 2022.1 on 2026-10-31.
 
 From the repository root, the complete Maple layer is run with
 
