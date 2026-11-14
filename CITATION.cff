@@ -1,0 +1,44 @@
+# Authors: Davide Batic and Dr. Denys Dutykh (Mathematics Department, Khalifa University
+# of Science and Technology, Abu Dhabi, UAE)
+#
+# Citation metadata in Citation File Format 1.2.0, from which GitHub draws its button
+# "Cite this repository". The article has not been published yet, so the software itself
+# is cited.
+
+cff-version: 1.2.0
+message: "If you use these codes or this manuscript, please cite this software as given below."
+title: "Constant-Ell-Rotating-Dust: local realizability and global completion of constant-ℓ rotating dust"
+abstract: >-
+  Manuscript source, symbolic checks in Maple and SymPy, and figure generators of Part I of
+  the study by D. Batic and D. Dutykh of stationary axisymmetric rotating dust with constant
+  ℓ, proposed as a general-relativistic account of flat galactic rotation curves. The checks
+  cover the exact reductions of the local equations, the density fold, the variational and
+  matching identities and the differential-elimination branches; the figures show the
+  admissible density strip, the logical conditions of completion and the period obstructions
+  of a toroidal body.
+type: software
+version: "1.0.0"
+date-released: "2026-11-15"
+license: LGPL-2.1-only
+repository-code: "https://github.com/dutykh/Constant-Ell-Rotating-Dust"
+keywords:
+  - general-relativity
+  - einstein-equations
+  - rotating-dust
+  - galactic-rotation-curves
+  - computer-algebra
+  - sympy
+  - maple
+  - python
+  - latex
+  - research-code
+  - reproducible-research
+authors:
+  - family-names: Batic
+    given-names: Davide
+    affiliation: "Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, United Arab Emirates"
+    orcid: "https://orcid.org/0000-0002-7619-4900"
+  - family-names: Dutykh
+    given-names: Denys
+    affiliation: "Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, United Arab Emirates"
+    orcid: "https://orcid.org/0000-0001-5247-2788"

@@ -7,11 +7,21 @@ Authors: Dr. Davide Batic (Mathematics Department, Khalifa University of
          Science and Technology, Abu Dhabi, UAE)
 -->
 
-# Constant-ℓ Rotating Dust
+# Constant-Ell-Rotating-Dust: local realizability and global completion of constant-ℓ rotating dust
+
+![The strip of the plane of the speed and of x = rℓ where the density of constant-ℓ rotating dust can be nonnegative](docs/figures/rotating-dust-density.png)
+
+Where the density of constant-ℓ rotating dust can be nonnegative, in the plane of the subluminal speed v measured by
+the zero-angular-momentum observers and of the dimensionless x = rℓ. The algebraic factor N_v(x) of the density is
+nonnegative only in the hatched strip x₋(v) ⩽ x ⩽ x₊(v), bounded below by the fold x₋(v) = −2v/(1 − v²), where A = 0,
+and above by the ordinary density root x₊(v) = 2v/(1 + v²); positive density selects the orientation-preserving
+inverse sheet of the point transformation. The two broken curves are representative paths, not solutions of the
+velocity equation: they show how x = rℓ moves as the radius r grows at a fixed sign of ℓ, upwards for ℓ > 0 and
+downwards for ℓ < 0. The figure is drawn by `codes/generate_figures.py` from exact formulas.
 
 Manuscript source, symbolic certificates, validation scripts, and figure
-generators for the Batić–Dutykh study "Local realizability and global
-completion of constant-ℓ rotating dust".
+generators for the study by Davide Batic and Denys Dutykh, "Local realizability
+and global completion of constant-ℓ rotating dust".
 
 Stationary, axisymmetric rotating-dust spacetimes have been proposed as a
 general-relativistic account of flat galactic rotation curves. This work asks
@@ -26,7 +36,7 @@ title is the one with ℓ(η) = ℓ₀ constant.
 
 ## Status
 
-**Part I is complete** and is the whole of the present repository: the
+The repository holds Part I of the study, complete: the
 manuscript (44 pages), three vector figures and two data tables with their
 generators, and eight independent symbolic certificates in Maple and SymPy. The
 principal theorems and their proofs are in the main text of the manuscript. Its
@@ -35,14 +45,13 @@ axis arguments with an explicit flat trace, further radial-span estimates, the
 comparison with the near-edge approximation, the junction formulas, the
 nonlinear exterior hypotheses, and the spectroscopic formulation.
 
-**Part II, the numerical companion, is in preparation.** It will address the
-program of the numerical companion: closing the remaining sharp control
-problem, constructing globally admissible backgrounds under the field equations
-rather than by kinematic imposition, solving the interior and the stationary
-vacuum exterior as one coupled free-boundary problem, establishing numerical
-reliability and global regularity, determining dynamical stability, and
-computing observables from the complete spacetime. Its code and data will be
-added to this repository.
+The numerical questions that Part I leaves open are not treated here: closing
+the remaining sharp control problem, constructing globally admissible
+backgrounds under the field equations rather than by kinematic imposition,
+solving the interior and the stationary vacuum exterior as one coupled
+free-boundary problem, establishing numerical reliability and global
+regularity, determining dynamical stability, and computing observables from the
+complete spacetime.
 
 ## Principal results
 
@@ -87,6 +96,7 @@ DB-DD-ConstantEll-RotatingDust-PartI.pdf   compiled manuscript, 44 pages
 Makefile                                   build and verification driver
 figures/                                   three vector PDFs and two data tables
 codes/                                     certificates, generators, audits
+docs/figures/                              the figure of this page (PNG)
 LICENSE                                    GNU LGPL v2.1
 ```
 
@@ -192,13 +202,12 @@ figures to the manuscript, and the visual-inspection record.
 
 ## Tested environment
 
-- TeX Live 2025, pdfTeX 1.40.28, REVTeX 4.2, `latexmk` 4.87, GNU Make 4.4.1
-- Python 3.14.4 with SymPy 1.14.0, NumPy 2.3.5, Matplotlib 3.10.7
-- Maple 2022.0 and 2022.1 with `DEtools`, `DifferentialThomas`,
-  `DifferentialGeometry`, `PDEtools`, and `Physics`
-- `pdfinfo` from Poppler for page accounting
-
-Recent Python 3 releases should suffice. Maple's command-line kernel starts a
+The manuscript was built with TeX Live 2025, pdfTeX 1.40.28, REVTeX 4.2,
+`latexmk` 4.87 and GNU Make 4.4.1; the Python scripts were run with Python
+3.14.4, SymPy 1.14.0, NumPy 2.3.5 and Matplotlib 3.10.7; the Maple scripts with
+Maple 2022.0 and 2022.1 and the packages `DEtools`, `DifferentialThomas`,
+`DifferentialGeometry`, `PDEtools` and `Physics`; and the pages were counted
+with `pdfinfo` from Poppler. Recent Python 3 releases should suffice. Maple's command-line kernel starts a
 local `mserver`, so a restricted container may need permission to create a
 local socket; the scripts themselves make no network request.
 
@@ -219,29 +228,31 @@ viability. They are supporting evidence for the analytical proofs in the
 manuscript, not substitutes for them. Passing every viability gate is not a
 sufficiency theorem, and none of this constructs an isolated global galaxy.
 
-## Citing this work
+## How to cite
 
-```bibtex
-@unpublished{BaticDutykh2026ConstantEllPartI,
-  author = {Bati\'c, Davide and Dutykh, Denys},
-  title  = {Local realizability and global completion of
-            constant-$\ell$ rotating dust},
-  year   = {2026},
-  note   = {Preprint},
-}
+The article, D. Batic and D. Dutykh, "Local realizability and global completion
+of constant-ℓ rotating dust", has not been published yet. Until it is, please
+cite this repository as software:
+
+```text
+D. Batic and D. Dutykh, Constant-Ell-Rotating-Dust: local realizability and global completion
+of constant-ℓ rotating dust, software, version 1.0.0 (2026).
 ```
 
-## Authors
+https://github.com/dutykh/Constant-Ell-Rotating-Dust
 
-**Davide Batić**, Mathematics Department, Khalifa University of Science and
-Technology, PO Box 127788, Abu Dhabi, United Arab Emirates.
-<davide.batic@ku.ac.ae>
+The button "Cite this repository" in the right-hand column of this page gives
+the same reference, read from `CITATION.cff`.
 
-**Denys Dutykh**, Mathematics Department, Khalifa University of Science and
-Technology, PO Box 127788, Abu Dhabi, United Arab Emirates.
-<denys.dutykh@ku.ac.ae>
-
-## License
+## Licence
 
 Distributed under the GNU Lesser General Public License, version 2.1. See
 [`LICENSE`](LICENSE) for the full text.
+
+## Authors
+
+Davide Batic (davide.batic@ku.ac.ae) and Denys Dutykh (denys.dutykh@ku.ac.ae),
+Mathematics Department, Khalifa University of Science and Technology, PO Box
+127788, Abu Dhabi, United Arab Emirates.
+
+https://www.denys-dutykh.com/
